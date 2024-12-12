@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Kitchen and Eateries</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const App = () => {
+            const items = [
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+1" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+2" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+3" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+4" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+5" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+6" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+7" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+8" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+9" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+10" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+11" },
+                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+12" },
+                { title: "Unilorin B/shop", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+13" },
+                { title: "Wireless book shop", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+14" },
+                { title: "Arcane Bookshop", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+15" },
+                { title: "Arcane Tutorial and Book...", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+16" },
+            ];
+
+            return (
+                <div className="container mx-auto p-4">
+                    <h1 className="text-3xl font-bold text-center mb-6">Kitchen and Eateries</h1>
+                    <div className="flex justify-center mb-6">
+                        <input type="text" placeholder="Search by property eg. name, reg no etc" className="w-full max-w-lg p-2 border rounded-l-full" />
+                        <button className="bg-blue-900 text-white p-2 rounded-r-full">Search</button>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {items.map((item, index) => (
+                            <div key={index} className="border rounded-lg overflow-hidden shadow-lg">
+                                <img src={item.image} alt={`Image of ${item.title}`} className="w-full h-48 object-cover" />
+                                <div className="p-4">
+                                    <h2 className="font-bold text-lg">{item.title}</h2>
+                                    <p className="text-gray-600"><i className="fas fa-map-marker-alt"></i> {item.address}</p>
+                                    <div className="flex items-center mt-2">
+                                        <span className="text-yellow-500"><i className="fas fa-star"></i> {item.rating}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

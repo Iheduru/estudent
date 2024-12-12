@@ -1,0 +1,383 @@
+<html>
+<head>
+    <title>Ride Booking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">   <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+const { useState, useEffect } = React;
+
+const App = () => {
+    const [isRideOpen, setIsRideOpen] = useState(false);
+    const [isStoreOpen, setIsStoreOpen] = useState(false);
+    const [isServicesOpen, setIsServicesOpen] = useState(false);
+    const [isOthersOpen, setIsOthersOpen] = useState(false); // Added state for Others dropdown
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener("resize", checkScreenSize);
+        checkScreenSize(); // Check on initial load
+
+        return () => {
+            window.removeEventListener("resize", checkScreenSize);
+        };
+    }, []);
+
+    const checkScreenSize = () => {
+        setMobileMenuOpen(window.innerWidth >= 768);
+    };
+
+    const toggleRideDropdown = (e) => {
+        e.preventDefault();
+        setIsRideOpen((prevOpen) => !prevOpen);
+        setIsStoreOpen(false);
+        setIsServicesOpen(false);
+        setIsOthersOpen(false); // Close other dropdowns
+    };
+
+    const toggleStoreDropdown = (e) => {
+        e.preventDefault();
+        setIsStoreOpen((prevOpen) => !prevOpen);
+        setIsRideOpen(false);
+        setIsServicesOpen(false);
+        setIsOthersOpen(false); // Close other dropdowns
+    };
+
+    const toggleServicesDropdown = (e) => {
+        e.preventDefault();
+        setIsServicesOpen((prevOpen) => !prevOpen);
+        setIsRideOpen(false);
+        setIsStoreOpen(false);
+        setIsOthersOpen(false); // Close other dropdowns
+    };
+
+    const toggleOthersDropdown = (e) => {
+        e.preventDefault();
+        setIsOthersOpen((prevOpen) => !prevOpen);
+        setIsRideOpen(false);
+        setIsStoreOpen(false);
+        setIsServicesOpen(false); // Close other dropdowns
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen((prev) => !prev);
+    };
+
+    return (
+        <div>
+            <header className="flex justify-between items-center p-4 bg-white relative" style={{ zIndex: 40 }}>
+                <div className="text-lg font-bold mx-10">Logo</div>
+                <nav
+                    id="myLinks"
+                    className={`flex flex-col md:flex-row md:justify-center items-center space-x-0 md:space-x-10 space-y-4 md:space-y-0 ${isMobileMenuOpen ? '' : 'hidden'} md:flex`}
+                >
+                    <a href="homepage.html" className="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="loan.html" className="text-gray-600 hover:text-gray-900">Loan</a>
+                    <a href="buy.html" className="text-gray-600 hover:text-gray-900">Buy</a>
+                    <a href="ejobs.html" className="text-gray-600 hover:text-gray-900">Ejobs</a>
+
+                    {/* Ride Dropdown */}
+                    <div className="relative">
+                        <a
+                            href="#"
+                            className="text-white font-bold border rounded bg-blue-900 px-3"
+                            onClick={toggleRideDropdown}
+                        >
+                            Ride <i className={`fas fa-caret-${isRideOpen ? "up" : "down"} ml-1`} id="down"></i>
+                        </a>
+                        <div
+                            className={`absolute mt-2 w-full bg-white border rounded shadow-lg ${isRideOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <div className="flex flex-col space-y-2 px-2">
+                                <a href="ride.html" className="block text-black hover:bg-gray-200 p-2">All</a>
+                                <a href="bus.html" className="block text-black hover:bg-gray-200 p-2">Bus</a>
+                                <a href="cars.html" className="block text-white font-bold border rounded bg-blue-900 px-3">Car</a>
+                                <a href="plane.html" className="block text-black hover:bg-gray-200 p-2">Plane</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Store Dropdown */}
+                    <div className="relative">
+                        <button
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            onClick={toggleStoreDropdown}
+                        >
+                            Store <i className={`fas fa-caret-${isStoreOpen ? "up" : "down"} ml-1`}></i>
+                        </button>
+                        <div
+                            className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isStoreOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <a href="store.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="eatery.html" className="block text-black hover:bg-gray-200 px-4 py-2">Restaurant</a>
+                            <a href="accomo.html" className="block text-black hover:bg-gray-200 px-4 py-2">Accommodation and Hostel</a>
+                            <a href="books.html" className="block text-black hover:bg-gray-200 px-4 py-2">Book Stores</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Accessories</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Appliances</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Pharmacy</a>
+                        </div>
+                    </div>
+
+                    {/* Services Dropdown */}
+                    <div className="relative">
+                        <button
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            onClick={toggleServicesDropdown}
+                        >
+                            Services <i className={`fas fa-caret-${isServicesOpen ? "up" : "down"} ml-1`}></i>
+                        </button>
+                        <div
+                            className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
+                            <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
+                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
+                            <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
+                            <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
+                            <a href="tutoring.html" className="block text-black hover:bg-gray-200 px-4 py-2">Tutoring</a>
+                            <a href="/appliances-services" className="block text-black hover:bg-gray-200 px-4 py-2">Appliances</a>
+                        </div>
+                    </div>
+
+                    {/* Others Dropdown */}
+                    <div className="relative">
+                        <button
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            onClick={toggleOthersDropdown}
+                        >
+                            Others <i className={`fas fa-caret-${isOthersOpen ? "up" : "down"} ml-1`}></i>
+                        </button>
+                        <div
+                            className={`absolute mt-2 w-64 bg-white border rounded shadow-lg ${isOthersOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <a href="/all-others" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="report.html" className="block text-black hover:bg-gray-200 px-4 py-2">Report</a>
+                            <a href="/back-to-school" className="block text-black hover:bg-gray-200 px-4 py-2">Back To School</a>
+                            <a href="/deal-sales" className="block text-black hover:bg-gray-200 px-4 py-2">Deal Sales</a>
+                            <a href="/onsite-stores" className="block text-black hover:bg-gray-200 px-4 py-2">Onsite Stores</a>
+                            <a href="/student-loan" className="block text-black hover:bg-gray-200 px-4 py-2">Student Loan</a>
+                            <a href="studentbank.html" className="block text-black hover:bg-gray-200 px-4 py-2">Student Bank Account</a>
+                            <a href="/hmo" className="block text-black hover:bg-gray-200 px-4 py-2">HMO</a>
+                            <a href="/student-jobs" className="block text-black hover:bg-gray-200 px-4 py-2">Student Jobs, Volunteer</a>
+                            <a href="/learn-skills" className="block text-black hover:bg-gray-200 px-4 py-2">Learn Skills</a>
+                            <a href="/tutorial-centers" className="block text-black hover:bg-gray-200 px-4 py-2">Student Tutorials Centers</a>
+                            <a href="/career-guidance" className="block text-black hover:bg-gray-200 px-4 py-2">Career Guidance and Counseling</a>
+                            <a href="/student-id" className="block text-black hover:bg-gray-200 px-4 py-2">Student ID Card</a>
+                        </div>
+                    </div>
+
+                    <a href="profile.html" className="text-gray-600 hover:text-gray-900">Profile</a>
+                    <a href="#" className="text-black mx-10"><i className="fas fa-bell"></i></a>
+                </nav>
+
+                <button
+                    className="icon text-black text-2xl md:hidden"
+                    onClick={toggleMobileMenu}
+                >
+                    <i className="fa fa-bars"></i>
+                </button>
+            </header>
+         
+            <section>
+    <div className="relative">
+        <img src="https://placehold.co/1200x400" alt="A collage of images depicting various forms of indecent activities" className="w-full h-64 object-cover" />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-start p-6">
+            <h1 className="text-white text-2xl md:text-4xl font-bold">Report all sorts of indecent activities in any school here</h1>
+            <p className="text-white mt-2">It is possible to achieve academic excellence easily through financial scholarships. You are invited to apply Scholarships for future students at Kansas...</p>
+        </div>
+    </div>
+    <div className="bg-white p-6 md:p-12">
+        <h2 className="text-2xl md:text-3xl font-bold text-blue-700">Reporting to Law Enforcement</h2>
+        <div className="flex items-center justify-between mt-4">
+            <div className="flex space-x-4">
+                <a href="#" className="text-gray-500"><i className="fab fa-facebook-f"></i></a>
+                <a href="#" className="text-gray-500"><i className="fab fa-twitter"></i></a>
+                <a href="#" className="text-gray-500"><i className="fab fa-pinterest"></i></a>
+                <a href="#" className="text-gray-500"><i className="fab fa-tumblr"></i></a>
+            </div>
+            <button className="bg-blue-800 text-white px-6 py-2 rounded-full ml-auto"><a href="incident.html">REPORT</a></button>
+        </div>
+        <p className="mt-4 text-gray-700">The decision to report to law enforcement is entirely yours. Some survivors say that reporting and seeking justice helped them recover and regain a sense of control over their lives. Understanding how to report and learning more about the experience can take away some of the unknowns and help you feel more prepared.</p>
+        <h3 className="mt-6 text-xl font-bold text-gray-800">How do I report sexual assault?</h3>
+        <p className="mt-2 text-gray-700">You have several options for reporting sexual assault:</p>
+        <ul className="list-disc list-inside mt-2 text-gray-700">
+            <li><strong>Call 911.</strong> If you are in immediate danger, dial 911. Help will come to you, wherever you are.</li>
+            <li><strong>Contact the local police department.</strong> Call the direct line of your local police station or visit the station in person. If you are on a college campus you may also be able to contact campus-based law enforcement.</li>
+            <li><strong>Visit a medical center.</strong> If you are being treated for injuries resulting from sexual assault, tell a medical professional that you wish to report the crime. You can also choose to have a sexual assault forensic exam. To find an appropriate local health facility that is prepared to care for survivors, call the National Sexual Assault Hotline 800.656.HOPE (4673).</li>
+        </ul>
+
+    </div>
+    <div className="max-w-4xl mx-auto">
+                    <p className="mb-4">
+                        To learn more about the options in your area, call the National Sexual Assault Hotline at 800.656.HOPE (4673). You'll be connected to a staff member from a <a href="#" className="text-blue-600 underline">local sexual assault service provider</a> who will walk you through the process of getting help and reporting to law enforcement at your own pace. In most areas, there are specific law enforcement officers who are trained to interact with sexual assault survivors. Service providers can connect you to these officers, and might also send a trained advocate to accompany you through the reporting process.
+                    </p>
+                    <h2 className="text-2xl font-bold mb-2">Who will I be talking to?</h2>
+                    <p className="mb-4">
+                        In most areas, there are specific law enforcement officers who are trained to interact with survivors of sexual assault. In addition, many law enforcement agencies participate in Sexual Assault Response Teams (SARTs), which provide a survivor-centered, coordinated response to sexual assault. SARTs incorporate medical personnel, law enforcement, and sexual assault service providers in your area. They work together to organize the investigation, reduce repetition of questions and interviews, and facilitate communication among all agencies involved.
+                    </p>
+                    <p className="mb-4">
+                        Learn more about <a href="#" className="text-blue-600 underline">communicating with law enforcement</a>.
+                    </p>
+                    <h2 className="text-2xl font-bold mb-2">Is there a time limit on reporting to the police?</h2>
+                    <p className="mb-4">
+                        There is no limitation on when a victim can report a crime to police. However, in many states, there is a limitation on when charges can be filed and a case can be prosecuted. This is called the statute of limitations. Statutes of limitation vary by state, type of crime, age of the victim, and various other factors. Visit RAINN's <a href="#" className="text-blue-600 underline">State Law Database</a> to learn more about the criminal statutes of limitation where you are.
+                    </p>
+                    <h2 className="text-2xl font-bold mb-2">What are some common concerns about reporting?</h2>
+                    <p className="mb-4">
+                        If you have questions or concerns about reporting, you're not alone. The list below may have answers to some common questions that are on your mind.
+                    </p>
+                    <ul className="list-disc list-inside mb-4">
+                        <li className="mb-2"><strong>The perpetrator got scared away or stopped before finishing the assault.</strong> Attempted rape is a serious crime and can be reported. Reports of attempted rape and other assault are taken seriously.</li>
+                        <li className="mb-2"><strong>I know the person who hurt me.</strong> About 2/3 of victims know the perpetrator. It can be unnerving to be violated by someone you know. Regardless of who the perpetrator is, sexual assault is against the law.</li>
+                        <li className="mb-2"><strong>I've been intimate with the perpetrator in the past, or am currently in a relationship with the perpetrator.</strong> Sexual assault can occur within a relationship. Giving someone consent in the past does not give them consent for any act in the future. If you did not consent, they acted against the law—and you can report it.</li>
+                        <li className="mb-2"><strong>I have no physical injuries, and I'm worried there's not enough proof.</strong> Most sexual assaults do not result in external physical injuries. It's important to receive medical attention to check for internal injuries. You can also choose to have a <a href="#" className="text-blue-600 underline">sexual assault forensic exam</a> to check for DNA evidence that may not be visible on the surface.</li>
+                        <li className="mb-2"><strong>I'm worried law enforcement won't believe me.</strong> There has been great investment in police training on this topic. While there are occasional exceptions, most law enforcement officers are understanding and on your side. If you do encounter someone who isn't taking your case seriously, ask for their supervisor and let your <a href="#" className="text-blue-600 underline">local sexual assault service provider</a> know.</li>
+                        <li className="mb-2"><strong>I don't want to get in trouble.</strong> Sometimes minors are afraid of being disciplined, either by the law or by their parents, because they were doing something they shouldn't have when the abuse occurred. For example, a teen might have been consuming alcohol, or a child might have been breaking a house rule. It's important to remember that sexual assault is a crime—no matter the circumstances. Nothing you did caused this to happen.</li>
+                    </ul>
+                    <h2 className="text-2xl font-bold mb-2">Do I have to report to get rape kit?</h2>
+                    <p className="mb-4">
+                        By law, you are not required to report to law enforcement in order to receive a <a href="#" className="text-blue-600 underline">sexual assault forensic exam</a>, commonly referred to as a "rape kit." The Violence Against Women Reauthorization Act of 2013 has made it easier for someone to have a "Jane Doe rape kit," where they are given a code to identify themselves if they choose to report later.
+                    </p>
+                </div>
+                <div className="max-w-7xl mx-auto p-4">
+                    <div className="bg-white p-6  ">
+                        <h1 className="text-2xl font-bold mb-4">Does it matter whether or not I know the perpetrator? Can I still have an exam?</h1>
+                        <p className="mb-4">There is value in having a sexual assault forensic exam performed, regardless of whether or not you know the identity of the perpetrator or perpetrators. DNA evidence collected during the exam can <a href="#" className="text-blue-600">play an important role</a> in the case against the perpetrator.</p>
+                        <h2 className="text-xl font-bold mb-4">Will I have to pay for the exam?</h2>
+                        <p className="mb-4">By law, you should not be billed for the direct costs of a sexual assault forensic exam. The way states handle this law can vary. Since 2009, states have been required to provide sexual assault forensic exams for free or via reimbursement, regardless of cooperation with law enforcement. Starting in 2015, health facilities will no longer be able to charge for exams up front and ask for victims to file reimbursement through their insurance later. If you have questions about a bill you received related to your exam or about any other aspects of the process, you can contact your <a href="#" className="text-blue-600">local sexual assault service provider</a> or state coalition.</p>
+                        <h2 className="text-xl font-bold mb-4">Legal Disclaimer</h2>
+                        <p className="text-sm">The Rape Abuse and Incest National Network (RAINN) website provides general information that is intended, but not guaranteed, to be correct and up-to-date. The information is not presented as a source of legal advice. You should not rely, for legal advice, on statements or representations made within the website or by any externally referenced Internet sites. If you need legal advice upon which you intend to rely in the course of your legal affairs, consult a competent, independent attorney. RAINN does not assume any responsibility for actions or non-actions taken by people who have visited this site, and no one shall be entitled to a claim for detrimental reliance on any information provided or expressed.</p>
+                    </div>
+                    <div className="mt-8">
+                        <h2 className="text-xl font-bold mb-4">Related Content</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="bg-white p-4 rounded-lg shadow-md">
+                                <h3 className="text-lg font-bold mb-2">The Importance of DNA in Sexual Assault Cases</h3>
+                                <p className="text-sm mb-2">Preserving DNA evidence is a key tool for law enforcement to investigate and prosecute crimes of sexual violence.</p>
+                                <a href="#" className="text-blue-600">READ MORE</a>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg shadow-md">
+                                <h3 className="text-lg font-bold mb-2">What Is a Sexual Assault Forensic Exam?</h3>
+                                <p className="text-sm mb-2">During a sexual assault forensic exam, a trained healthcare professional can collect DNA evidence from your body, clothes, and other personal belongings.</p>
+                                <a href="#" className="text-blue-600">READ MORE</a>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg shadow-md">
+                                <h3 className="text-lg font-bold mb-2">Community Support and Law Enforcement</h3>
+                                <p className="text-sm mb-2">You may only interact with law enforcement briefly, but they might ask you to provide a statement about the length of time.</p>
+                                <a href="#" className="text-blue-600">READ MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="mt-8 bg-blue-100 p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center justify-between">
+                        <div className="text-center md:text-left mb-4 md:mb-0">
+                            <p className="text-lg font-bold mb-2">“The real healing was achieved when I started to sincerely believe I’m not responsible for what happened to me.”</p>
+                            <p className="text-sm">KEITH, SURVIVOR</p>
+                        </div>
+                        <div className="text-center">
+                            <p className="text-lg font-bold mb-2">Search for support in your local community from more than 1,000 local sexual assault service providers.</p>
+                            <button className="bg-blue-600 text-white px-4 py-2 rounded">Search All Providers</button>
+                        </div>
+                        <div className="text-center md:text-right">
+                            <p className="text-lg font-bold mb-2">91% of survivors of sexual violence</p>
+                            <button className="bg-green-600 text-white px-4 py-2 rounded">Donate Now</button>
+                        </div>
+                    </div>
+                </div>
+</section>
+
+
+            <div className="text-center py-8 container p-8">
+                        <h2 className="text-xl font-bold">You are 90% MORE likely to get the best flight deals by subscribing</h2>
+                        <p className="mt-4">Enter your email and we'll send them your way.</p>
+                        <div className="mt-4 flex justify-center">
+                            <input type="email" placeholder="Enter your email" className="border border-gray-400 py-2 px-4 w-1/3  focus:outline-none focus:shadow-lg transition-shadow duration-300 ease-in-out"/>
+                            <button className="bg-blue-900 text-white py-2 px-4 transform transition-transform duration-200 hover:scale-105">Search Flight</button>
+                        </div>
+                    </div>
+                    <div className="text-center py-4 text-sm text-gray-600">
+                        <p>Your privacy is important to us, so we'll never spam you or share your info with third parties. Take a look at our privacy policy. You can unsubscribe at any time.</p>
+                    </div>
+                    
+                    <footer className=" relative flex-wrap bg-blue-900 text-white py-8">
+                    <div className="p-8">
+                    <div className="flex justify-between items-center mb-8">
+                        <div className="flex space-x-4">
+                            <img src="https://placehold.co/40x25" alt="Spanish flag" className="w-10 h-6"/>
+                            <img src="https://placehold.co/40x25" alt="Italian flag" className="w-10 h-6"/>
+                            <img src="https://placehold.co/40x25" alt="German flag" className="w-10 h-6"/>
+                            <img src="https://placehold.co/40x25" alt="French flag" className="w-10 h-6"/>
+                        </div>
+                        <div className="flex space-x-4">
+                            <i className="fab fa-twitter"></i>
+                            <i className="fab fa-whatsapp"></i>
+                            <i className="fab fa-facebook-f"></i>
+                            <i className="fab fa-instagram"></i>
+                        </div>
+                    </div>
+                    <div className="relative justify-between">
+                        <div>
+                            <h1 className="text-4xl font-bold mb-2">Logo</h1>
+                            <p>Book tickets & track your coach anytime, anywhere.</p>
+                        </div>
+                        <div className="flex space-x-16">
+                            <div>
+                                <h2 className="font-bold mb-2">Quick Links</h2>
+                                <ul className="space-y-1">
+                                    <li>• Corporate Info</li>
+                                    <li>• Accessibility</li>
+                                    <li>• Jobs</li>
+                                    <li>• Ad Choices</li>
+                                    <li>• Privacy Policy</li>
+                                    <li>• CA Notice</li>
+                                    <li>• Terms of Service - NEW</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul className="space-y-1 mt-8">
+                                    <li>• NBC App</li>
+                                    <li>• Peacock</li>
+                                    <li>• Advertise</li>
+                                    <li>• Closed Captioning</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul className="space-y-1 mt-8">
+                                    <li>• Advertise</li>
+                                    <li>• Link TV Provider</li>
+                                    <li>• FAQ</li>
+                                    <li>• Casting</li>
+                                    <li>• Contact Us</li>
+                                    <li>• Local Schedule</li>
+                                    <li>• Tickets and NBC Studio Tour</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

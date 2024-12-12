@@ -1,0 +1,352 @@
+<html>
+<head>
+    <title>Student Financial Assistance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const openCamera = () => {
+    document.getElementById('cameraInput').click();
+};
+
+const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            document.getElementById('previewImage').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
+const { useState, useEffect } = React;
+
+const App = () => {
+    const [isRideOpen, setIsRideOpen] = useState(false);
+    const [isStoreOpen, setIsStoreOpen] = useState(false);
+    const [isServicesOpen, setIsServicesOpen] = useState(false);
+    const [isOthersOpen, setIsOthersOpen] = useState(false); // Added state for Others dropdown
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener("resize", checkScreenSize);
+        checkScreenSize(); // Check on initial load
+
+        return () => {
+            window.removeEventListener("resize", checkScreenSize);
+        };
+    }, []);
+
+    const checkScreenSize = () => {
+        setMobileMenuOpen(window.innerWidth >= 768);
+    };
+
+    const toggleRideDropdown = (e) => {
+        e.preventDefault();
+        setIsRideOpen((prevOpen) => !prevOpen);
+        setIsStoreOpen(false);
+        setIsServicesOpen(false);
+        setIsOthersOpen(false); // Close other dropdowns
+    };
+
+    const toggleStoreDropdown = (e) => {
+        e.preventDefault();
+        setIsStoreOpen((prevOpen) => !prevOpen);
+        setIsRideOpen(false);
+        setIsServicesOpen(false);
+        setIsOthersOpen(false); // Close other dropdowns
+    };
+
+    const toggleServicesDropdown = (e) => {
+        e.preventDefault();
+        setIsServicesOpen((prevOpen) => !prevOpen);
+        setIsRideOpen(false);
+        setIsStoreOpen(false);
+        setIsOthersOpen(false); // Close other dropdowns
+    };
+
+    const toggleOthersDropdown = (e) => {
+        e.preventDefault();
+        setIsOthersOpen((prevOpen) => !prevOpen);
+        setIsRideOpen(false);
+        setIsStoreOpen(false);
+        setIsServicesOpen(false); // Close other dropdowns
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen((prev) => !prev);
+    };
+
+    return (
+        <div>
+            <header className="flex justify-between items-center p-4 bg-white relative" style={{ zIndex: 40 }}>
+                <div className="text-lg font-bold mx-10">Logo</div>
+                <nav
+                    id="myLinks"
+                    className={`flex flex-col md:flex-row md:justify-center items-center space-x-0 md:space-x-10 space-y-4 md:space-y-0 ${isMobileMenuOpen ? '' : 'hidden'} md:flex`}
+                >
+                    <a href="homepage.html" className="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="loan.html" className="text-white font-bold border rounded bg-blue-900 px-3">Loan</a>
+                    <a href="buy.html" className="text-gray-600 hover:text-gray-900">Buy</a>
+                    <a href="ejobs.html" className="text-gray-600 hover:text-gray-900">Ejobs</a>
+
+                    {/* Ride Dropdown */}
+                    <div className="relative">
+                        <a
+                            href="#"
+                            className="text-gray-600 hover:text-gray-900 px-3"
+                            onClick={toggleRideDropdown}
+                        >
+                            Ride <i className={`fas fa-caret-${isRideOpen ? "up" : "down"} ml-1`} id="down"></i>
+                        </a>
+                        <div
+                            className={`absolute mt-2 w-full bg-white border rounded shadow-lg ${isRideOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <div className="flex flex-col space-y-2 px-2">
+                                <a href="ride.html" className="block text-black hover:bg-gray-200 p-2">All</a>
+                                <a href="bus.html" className="block text-black hover:bg-gray-200 p-2">Bus</a>
+                                <a href="cars.html" className="block text-black hover:bg-gray-200 p-2">Car</a>
+                                <a href="plane.html" className="block text-black hover:bg-gray-200 p-2">Plane</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Store Dropdown */}
+                    <div className="relative">
+                        <button
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            onClick={toggleStoreDropdown}
+                        >
+                            Store <i className={`fas fa-caret-${isStoreOpen ? "up" : "down"} ml-1`}></i>
+                        </button>
+                        <div
+                            className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isStoreOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <a href="store.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="eatery.html" className="block text-black hover:bg-gray-200 px-4 py-2">Restaurant</a>
+                            <a href="accomo.html" className="block text-black hover:bg-gray-200 px-4 py-2">Accommodation and Hostel</a>
+                            <a href="books.html" className="block text-black hover:bg-gray-200 px-4 py-2">Book Stores</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Accessories</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Appliances</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Pharmacy</a>
+                        </div>
+                    </div>
+
+                    {/* Services Dropdown */}
+                    <div className="relative">
+                        <button
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            onClick={toggleServicesDropdown}
+                        >
+                            Services <i className={`fas fa-caret-${isServicesOpen ? "up" : "down"} ml-1`}></i>
+                        </button>
+                        <div
+                            className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
+                            <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
+                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
+                            <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
+                            <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
+                            <a href="tutoring.html" className="block text-black hover:bg-gray-200 px-4 py-2">Tutoring</a>
+                            <a href="/appliances-services" className="block text-black hover:bg-gray-200 px-4 py-2">Appliances</a>
+                        </div>
+                    </div>
+
+                    {/* Others Dropdown */}
+                    <div className="relative">
+                        <button
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            onClick={toggleOthersDropdown}
+                        >
+                            Others <i className={`fas fa-caret-${isOthersOpen ? "up" : "down"} ml-1`}></i>
+                        </button>
+                        <div
+                            className={`absolute mt-2 w-64 bg-white border rounded shadow-lg ${isOthersOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <a href="/all-others" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="report.html" className="block text-black hover:bg-gray-200 px-4 py-2">Report</a>
+                            <a href="/back-to-school" className="block text-black hover:bg-gray-200 px-4 py-2">Back To School</a>
+                            <a href="/deal-sales" className="block text-black hover:bg-gray-200 px-4 py-2">Deal Sales</a>
+                            <a href="/onsite-stores" className="block text-black hover:bg-gray-200 px-4 py-2">Onsite Stores</a>
+                            <a href="/student-loan" className="block text-black hover:bg-gray-200 px-4 py-2">Student Loan</a>
+                            <a href="studentbank.html" className="block text-black hover:bg-gray-200 px-4 py-2">Student Bank Account</a>
+                            <a href="/hmo" className="block text-black hover:bg-gray-200 px-4 py-2">HMO</a>
+                            <a href="/student-jobs" className="block text-black hover:bg-gray-200 px-4 py-2">Student Jobs, Volunteer</a>
+                            <a href="/learn-skills" className="block text-black hover:bg-gray-200 px-4 py-2">Learn Skills</a>
+                            <a href="/tutorial-centers" className="block text-black hover:bg-gray-200 px-4 py-2">Student Tutorials Centers</a>
+                            <a href="/career-guidance" className="block text-black hover:bg-gray-200 px-4 py-2">Career Guidance and Counseling</a>
+                            <a href="/student-id" className="block text-black hover:bg-gray-200 px-4 py-2">Student ID Card</a>
+                        </div>
+                    </div>
+
+                    <a href="profile.html" className="text-gray-600 hover:text-gray-900">Profile</a>
+                    <a href="#" className="text-black mx-10"><i className="fas fa-bell"></i></a>
+                </nav>
+
+                <button
+                    className="icon text-black text-2xl md:hidden"
+                    onClick={toggleMobileMenu}
+                >
+                    <i className="fa fa-bars"></i>
+                </button>
+            </header>                 
+            
+            <main className="flex flex-col md:flex-row justify-center items-start p-6 md:p-8">
+                        <div class="md:w-1/2 p-4">
+                        <h1 class="text-2xl font-bold mb-4">Level 1 security</h1>
+                        <p class="text-gray-700 mb-6">
+                            We are Pettycash, a lending firm with customers in 36 states in Nigeria. We don’t have branches, but we do have enough employees dedicated to helping our customers borrow and invest funds. We offer a fully digital experience by providing instant loan to salary earners in Nigerian though their employer or individually. This means our customers can access finance anytime and anywhere.
+                        </p>
+                        <div className="flex items-center mx-7">
+                <div className="w-6 h-6 rounded-full border-2 border-green-500 flex items-center justify-center">
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div className="flex-1 h-0.5 bg-gray-300 mx-1"></div>
+                <div className="w-6 h-6 rounded-full border-2 border-green-500 flex items-center justify-center">
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div className="flex-1 h-0.5 bg-gray-300 mx-1"></div>
+                <div className="w-6 h-6 rounded-full border-2 border-green-500 flex items-center justify-center">
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                
+                <div className="flex-1 h-0.5 bg-gray-300 mx-1"></div>
+                <div className="w-6 h-6 rounded-full border-2 border-gray-300"></div>
+            </div>
+                    </div>
+                    <div class="md:w-1/2 p-4">
+    <div class="border rounded-lg shadow-lg p-6">
+        <h2 class="text-lg font-bold mb-4">Face Verification</h2>
+        <div class="flex flex-col items-center">
+            <button 
+                onClick={openCamera} 
+                class="text-2xl mb-2 focus:outline-none"
+                aria-label="Open camera"
+            >
+                <i class="fas fa-eye"></i>
+            </button>
+            <p class="text-gray-700 mb-4">Set your face to the center of the circle</p>
+            <input 
+                type="file" 
+                accept="image/*" 
+                capture="environment"
+                id="cameraInput"
+                required 
+                style={{ display: 'none' }} 
+                onChange={handleFileUpload} 
+            />
+            <div class="relative">
+                <img 
+                    id="previewImage" 
+                    src="https://placehold.co/200x200" 
+                    alt="Face verification placeholder" 
+                    class="rounded-lg" 
+                />
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-32 h-32 border-2 border-dashed border-white rounded-full"></div>
+                </div>
+            </div>
+        </div>
+        <button className="w-full md:w-auto bg-blue-900 text-white rounded p-2 px-4 transform transition-transform duration-200 hover:scale-105 mt-5"><a href="level2.html">Next</a></button>
+    </div>
+</div>
+
+</main>
+
+<div className="text-center py-8 container p-8">
+                        <h2 className="text-xl font-bold">You are 90% MORE likely to get the best flight deals by subscribing</h2>
+                        <p className="mt-4">Enter your email and we'll send them your way.</p>
+                        <div className="mt-4 flex justify-center">
+                            <input type="email" placeholder="Enter your email" className="border border-gray-400 py-2 px-4 w-1/3  focus:outline-none focus:shadow-lg transition-shadow duration-300 ease-in-out"/>
+                            <button className="bg-blue-900 text-white py-2 px-4 transform transition-transform duration-200 hover:scale-105">Search Flight</button>
+                        </div>
+                    </div>
+                    <div className="text-center py-4 text-sm text-gray-600">
+                        <p>Your privacy is important to us, so we'll never spam you or share your info with third parties. Take a look at our privacy policy. You can unsubscribe at any time.</p>
+                    </div>
+                    
+                    <footer className=" relative flex-wrap bg-blue-900 text-white py-8">
+                    <div className="p-8">
+                    <div className="flex justify-between items-center mb-8">
+                        <div className="flex space-x-4">
+                            <img src="https://placehold.co/40x25" alt="Spanish flag" className="w-10 h-6"/>
+                            <img src="https://placehold.co/40x25" alt="Italian flag" className="w-10 h-6"/>
+                            <img src="https://placehold.co/40x25" alt="German flag" className="w-10 h-6"/>
+                            <img src="https://placehold.co/40x25" alt="French flag" className="w-10 h-6"/>
+                        </div>
+                        <div className="flex space-x-4">
+                            <i className="fab fa-twitter"></i>
+                            <i className="fab fa-whatsapp"></i>
+                            <i className="fab fa-facebook-f"></i>
+                            <i className="fab fa-instagram"></i>
+                        </div>
+                    </div>
+                    <div className="relative justify-between">
+                        <div>
+                            <h1 className="text-4xl font-bold mb-2">Logo</h1>
+                            <p>Book tickets & track your coach anytime, anywhere.</p>
+                        </div>
+                        <div className="flex space-x-16">
+                            <div>
+                                <h2 className="font-bold mb-2">Quick Links</h2>
+                                <ul className="space-y-1">
+                                    <li>• Corporate Info</li>
+                                    <li>• Accessibility</li>
+                                    <li>• Jobs</li>
+                                    <li>• Ad Choices</li>
+                                    <li>• Privacy Policy</li>
+                                    <li>• CA Notice</li>
+                                    <li>• Terms of Service - NEW</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul className="space-y-1 mt-8">
+                                    <li>• NBC App</li>
+                                    <li>• Peacock</li>
+                                    <li>• Advertise</li>
+                                    <li>• Closed Captioning</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul className="space-y-1 mt-8">
+                                    <li>• Advertise</li>
+                                    <li>• Link TV Provider</li>
+                                    <li>• FAQ</li>
+                                    <li>• Casting</li>
+                                    <li>• Contact Us</li>
+                                    <li>• Local Schedule</li>
+                                    <li>• Tickets and NBC Studio Tour</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

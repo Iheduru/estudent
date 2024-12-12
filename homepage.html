@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            max-width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="root"></div>
+    <script type="text/babel">
+const { useState, useEffect } = React;
+
+const App = () => {
+    const [isRideOpen, setIsRideOpen] = useState(false);
+    const [isStoreOpen, setIsStoreOpen] = useState(false);
+    const [isServicesOpen, setIsServicesOpen] = useState(false);
+    const [isOthersOpen, setIsOthersOpen] = useState(false); // Added state for Others dropdown
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        window.addEventListener("resize", checkScreenSize);
+        checkScreenSize(); // Check on initial load
+
+        return () => {
+            window.removeEventListener("resize", checkScreenSize);
+        };
+    }, []);
+
+    const checkScreenSize = () => {
+        setMobileMenuOpen(window.innerWidth >= 768);
+    };
+
+    const toggleRideDropdown = (e) => {
+        e.preventDefault();
+        setIsRideOpen((prevOpen) => !prevOpen);
+        setIsStoreOpen(false);
+        setIsServicesOpen(false);
+        setIsOthersOpen(false); // Close other dropdowns
+    };
+
+    const toggleStoreDropdown = (e) => {
+        e.preventDefault();
+        setIsStoreOpen((prevOpen) => !prevOpen);
+        setIsRideOpen(false);
+        setIsServicesOpen(false);
+        setIsOthersOpen(false); // Close other dropdowns
+    };
+
+    const toggleServicesDropdown = (e) => {
+        e.preventDefault();
+        setIsServicesOpen((prevOpen) => !prevOpen);
+        setIsRideOpen(false);
+        setIsStoreOpen(false);
+        setIsOthersOpen(false); // Close other dropdowns
+    };
+
+    const toggleOthersDropdown = (e) => {
+        e.preventDefault();
+        setIsOthersOpen((prevOpen) => !prevOpen);
+        setIsRideOpen(false);
+        setIsStoreOpen(false);
+        setIsServicesOpen(false); // Close other dropdowns
+    };
+
+    const toggleMobileMenu = () => {
+        setMobileMenuOpen((prev) => !prev);
+    };
+
+    return (
+        <div>
+            <header className="flex justify-between items-center p-4 bg-white relative" style={{ zIndex: 40 }}>
+                <div className="text-lg font-bold mx-10">Logo</div>
+                <nav
+                    id="myLinks"
+                    className={`flex flex-col md:flex-row md:justify-center items-center space-x-0 md:space-x-10 space-y-4 md:space-y-0 ${isMobileMenuOpen ? '' : 'hidden'} md:flex`}
+                >
+                <a href="homepage.html" className="text-white font-bold border rounded bg-blue-900 px-3 py-2">Home</a>
+                    <a href="loan.html" className="text-gray-600 hover:text-gray-900 px-3 py-2">Loan</a>
+                    <a href="buy.html" className="text-gray-600 hover:text-gray-900 px-3 py-2">Buy</a>
+                    <a href="ejobs.html" className="text-gray-600 hover:text-gray-900 px-3 py-2">Ejobs</a>
+
+                    {/* Ride Dropdown */}
+                    <div className="relative">
+                        <a
+                            href="#"
+                            className="text-gray-600 hover:text-gray-900 px-3"
+                            onClick={toggleRideDropdown}
+                        >
+                            Ride <i className={`fas fa-caret-${isRideOpen ? "up" : "down"} ml-1`} id="down"></i>
+                        </a>
+                        <div
+                            className={`absolute mt-2 w-full bg-white border rounded shadow-lg ${isRideOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <div className="flex flex-col space-y-2 px-2">
+                                <a href="ride.html" className="block text-black hover:bg-gray-200 p-2">All</a>
+                                <a href="bus.html" className="block text-black hover:bg-gray-200 p-2">Bus</a>
+                                <a href="cars.html" className="block text-black hover:bg-gray-200 p-2">Car</a>
+                                <a href="plane.html" className="block text-black hover:bg-gray-200 p-2">Plane</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Store Dropdown */}
+                    <div className="relative">
+                        <button
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            onClick={toggleStoreDropdown}
+                        >
+                            Store <i className={`fas fa-caret-${isStoreOpen ? "up" : "down"} ml-1`}></i>
+                        </button>
+                        <div
+                            className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isStoreOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <a href="store.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="eatery.html" className="block text-black hover:bg-gray-200 px-4 py-2">Restaurant</a>
+                            <a href="accomo.htmlq" className="block text-black hover:bg-gray-200 px-4 py-2">Accommodation and Hostel</a>
+                            <a href="books.html" className="block text-black hover:bg-gray-200 px-4 py-2">Book Stores</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Accessories</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Appliances</a>
+                            <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Pharmacy</a>
+                        </div>
+                    </div>
+
+                    {/* Services Dropdown */}
+                    <div className="relative">
+                        <button
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            onClick={toggleServicesDropdown}
+                        >
+                            Services <i className={`fas fa-caret-${isServicesOpen ? "up" : "down"} ml-1`}></i>
+                        </button>
+                        <div
+                            className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
+                            <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
+                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
+                            <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
+                            <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
+                            <a href="tutoring.html" className="block text-black hover:bg-gray-200 px-4 py-2">Tutoring</a>
+                            <a href="/appliances-services" className="block text-black hover:bg-gray-200 px-4 py-2">Appliances</a>
+                        </div>
+                    </div>
+                    {/* Others Dropdown */}
+                    <div className="relative">
+                        <button
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            onClick={toggleOthersDropdown}
+                        >
+                            Others <i className={`fas fa-caret-${isOthersOpen ? "up" : "down"} ml-1`}></i>
+                        </button>
+                        <div
+                            className={`absolute mt-2 w-64 bg-white border rounded shadow-lg ${isOthersOpen ? "block" : "hidden"}`}
+                            style={{ top: '100%', left: 0 }}
+                        >
+                            <a href="/all-others" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="report.html" className="block text-black hover:bg-gray-200 px-4 py-2">Report</a>
+                            <a href="/back-to-school" className="block text-black hover:bg-gray-200 px-4 py-2">Back To School</a>
+                            <a href="/deal-sales" className="block text-black hover:bg-gray-200 px-4 py-2">Deal Sales</a>
+                            <a href="/onsite-stores" className="block text-black hover:bg-gray-200 px-4 py-2">Onsite Stores</a>
+                            <a href="/student-loan" className="block text-black hover:bg-gray-200 px-4 py-2">Student Loan</a>
+                            <a href="studentbank.html" className="block text-black hover:bg-gray-200 px-4 py-2">Student Bank Account</a>
+                            <a href="/hmo" className="block text-black hover:bg-gray-200 px-4 py-2">HMO</a>
+                            <a href="/student-jobs" className="block text-black hover:bg-gray-200 px-4 py-2">Student Jobs, Volunteer</a>
+                            <a href="/learn-skills" className="block text-black hover:bg-gray-200 px-4 py-2">Learn Skills</a>
+                            <a href="/tutorial-centers" className="block text-black hover:bg-gray-200 px-4 py-2">Student Tutorials Centers</a>
+                            <a href="/career-guidance" className="block text-black hover:bg-gray-200 px-4 py-2">Career Guidance and Counseling</a>
+                            <a href="/student-id" className="block text-black hover:bg-gray-200 px-4 py-2">Student ID Card</a>
+                        </div>
+                    </div>
+
+                    <a href="profile.html" className="text-gray-600 hover:text-gray-900">Profile</a>
+                    <a href="#" className="text-black mx-10"><i className="fas fa-bell"></i></a>
+                </nav>
+
+                <button
+                    className="icon text-black text-2xl md:hidden"
+                    onClick={toggleMobileMenu}
+                >
+                    <i className="fa fa-bars"></i>
+                </button>
+            </header>
+        
+
+                        <main>
+                        <section className="relative w-full h-96" style={{ zIndex: 10 }}>
+                            <img src="images/header1.png" alt="Graduation ceremony" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#1A1037] via-[#1A1037CC] to-[#1A1037] opacity-90"></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <h1 className="text-white text-3xl md:text-4xl font-bold mb-4">
+            Enjoy being a student than any other
+          </h1>
+          <p className="text-white text-sm md:text-lg mb-6">
+            Lorem ipsum dolor sit amet consectetur. Et rhoncus nunc dictum massa.
+          </p>
+          <div className="flex space-x-4">
+            <button className="bg-none border rounded text-white px-6 py-2 rounded shadow transform transition-transform duration-200 hover:scale-105"><a href="ejobs.html">ejobs</a></button>
+            <button className="bg-none border rounded text-white px-6 py-2 rounded shadow transform transition-transform duration-200 hover:scale-105"><a href="buy.html">buy</a></button>
+            <button className="bg-none border rounded text-white px-6 py-2 rounded shadow transform transition-transform duration-200 hover:scale-105"><a href="loan.html">loans</a></button>
+            <button className="bg-none border rounded text-white px-6 py-2 rounded shadow transform transition-transform duration-200 hover:scale-105"><a href="ride.html">Ride</a></button>
+          </div>
+        </div>
+                        </section>
+                        </main>
+                        <section className="container mx-auto px-4 py-16">
+                            <h2 className="text-center text-2xl font-bold mb-8">3 steps to apply for loan</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                                <div>
+                                    <h3 className="text-xl font-bold">Step 1</h3>
+                                    <h4 className="text-lg font-bold mt-2">Get loan</h4>
+                                    <p className="mt-2">Enter your pick-up point, date and time, select your car.</p>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold">Step 2</h3>
+                                    <h4 className="text-lg font-bold mt-2">Apply for Scholarship</h4>
+                                    <p className="mt-2">Enter your pick-up point, date and time, select your car.</p>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold">Step 3</h3>
+                                    <h4 className="text-lg font-bold mt-2">Student ID</h4>
+                                    <p className="mt-2">Enter your pick-up point, date and time, select your car.</p>
+                                </div>
+                            </div>
+                        </section>
+                        <section className="container mx-auto px-4 py-16">
+                            <h2 className="text-center text-2xl font-bold mb-8">Our Other Choices</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div className="flex items-center space-x-4">
+                                    <img src="https://placehold.co/100x100" alt="e-ride" className="w-24 h-24 object-cover rounded"/>
+                                    <div>
+                                        <h3 className="text-lg font-bold">e-ride</h3>
+                                        <p className="text-gray-600">Lorem ipsum dolor sit amet consectetur. Et rhoncus nunc dictum massa.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <img src="https://placehold.co/100x100" alt="hauling" className="w-24 h-24 object-cover rounded"/>
+                                    <div>
+                                        <h3 className="text-lg font-bold">hauling</h3>
+                                        <p className="text-gray-600">Lorem ipsum dolor sit amet consectetur. Et rhoncus nunc dictum massa.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <img src="https://placehold.co/100x100" alt="Pride of Nigeria" className="w-24 h-24 object-cover rounded"/>
+                                    <div>
+                                        <h3 className="text-lg font-bold">Pride of Nigeria</h3>
+                                        <p className="text-gray-600">Lorem ipsum dolor sit amet consectetur. Et rhoncus nunc dictum massa.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <img src="https://placehold.co/100x100" alt="e-ride" className="w-24 h-24 object-cover rounded"/>
+                                    <div>
+                                        <h3 className="text-lg font-bold">e-ride</h3>
+                                        <p className="text-gray-600">Lorem ipsum dolor sit amet consectetur. Et rhoncus nunc dictum massa.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <img src="https://placehold.co/100x100" alt="hauling" className="w-24 h-24 object-cover rounded"/>
+                                    <div>
+                                        <h3 className="text-lg font-bold">hauling</h3>
+                                        <p className="text-gray-600">Lorem ipsum dolor sit amet consectetur. Et rhoncus nunc dictum massa.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <img src="https://placehold.co/100x100" alt="Pride of Nigeria" className="w-24 h-24 object-cover rounded"/>
+                                    <div>
+                                        <h3 className="text-lg font-bold">Pride of Nigeria</h3>
+                                        <p className="text-gray-600">Lorem ipsum dolor sit amet consectetur. Et rhoncus nunc dictum massa.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    <section className="container mx-auto p-4 mt-8">
+    <div className="flex justify-between items-center mb-4">
+        <h2 className="text-2xl font-bold">Short Videos</h2>
+        <a href="shortvideo.html" className="text-blue-500 transform hover:scale-105">See All</a>
+    </div>
+    <div className="grid grid-cols-4 gap-4 transition ">
+        {[
+            { src: "images/ballon.jpg", views: "5,345", likes: "203" },
+            { src: "images/glass.jpg", views: "10,123", likes: "450" },
+            { src: "images/kid.jpg", views: "8,204", likes: "325" },
+            { src: "images/bea.png", views: "2,876", likes: "120" },
+        ].map((video, i) => (
+            <div key={i} className="relative transform hover:scale-105 ">
+                <img
+                    src={video.src}
+                    alt={`Short video thumbnail ${i + 1}`}
+                    className="w-full h-48 object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 flex justify-between items-center text-white">
+                    <div className="flex items-center space-x-2">
+                        <i className="fas fa-heart"></i>
+                        <span>{video.likes}</span>
+                    </div>
+                    <span>{video.views} views</span>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<section className="container mx-auto p-4 mt-8">
+    <h2 className="text-2xl font-bold text-red-500 mb-4">Trending</h2>
+    <div className="grid grid-cols-5 gap-4 rounded">
+        {[
+            { 
+                src: "images/pollosy.jpg", 
+                title: "Lecturer caught with fraud" 
+            },
+            { 
+                src: "images/po.jpg", 
+                title: "Celebrity spotted in unusual act" 
+            },
+            { 
+                src: "images/bushjpg.jpg", 
+                title: "Breaking: Stock market crashes" 
+            },
+            { 
+                src: "images/new tech.jpg", 
+                title: "New tech gadget launched" 
+            },
+            { 
+                src: "images/wildfire.jpg", 
+                title: "Wildfire continues to spread" 
+            },
+        ].map((trend, i) => (
+            <div key={i} className="relative transform rounded-full hover:scale-105 ">
+                <img
+                    src={trend.src}
+                    alt={`Trending item ${i + 1}`}
+                    className="w-full h-32 object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 flex justify-between items-center text-white">
+                    <span>{trend.title}</span>
+                    <div className="bg-red-500 w-3 h-3 rounded-full"></div>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<section className="container mx-auto p-4 mt-8">
+    <h2 className="text-2xl font-bold mb-4">Today's Fashion Deals</h2>
+    <div className="grid grid-cols-4 gap-4">
+        {[
+            { 
+                src: "images/handbag.jpg", 
+                title: "Designer Handbag", 
+                price: "$5,000 - $2,000" 
+            },
+            { 
+                src: "images/Sneakers.jpg", 
+                title: "Stylish Sneakers", 
+                price: "$120 - $80" 
+            },
+            { 
+                src: "images/Leather Jacket.jpg", 
+                title: "Leather Jacket", 
+                price: "$300 - $150" 
+            },
+            { 
+                src: "images/sundress.jpg", 
+                title: "Summer Dress", 
+                price: "$100 - $50" 
+            },
+        ].map((deal, i) => (
+            <div key={i} className="relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+                <img
+                    src={deal.src}
+                    alt={`${deal.title} thumbnail`}
+                    className="w-full h-48 object-fit" // Adjust aspect ratio as needed
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                    <h3 className="font-bold">{deal.title}</h3>
+                    <p>{deal.price}</p>
+                    <button className="bg-white text-black px-2 py-1 mt-2 rounded transform transition-transform duration-200 hover:scale-105">Buy Now</button>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<section className="container mx-auto p-4 mt-8">
+    <h2 className="text-2xl font-bold mb-4">Today's Flight tranport, interstate road transport, train, eride Deals,</h2>
+    <div className="grid grid-cols-4 gap-4">
+        {[
+            { 
+                src: "images/skycrapper.jpg", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$5,000 - $2,000" 
+            },
+            { 
+                src: "images/lux2.jpg", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$120 - $80" 
+            },
+            { 
+                src: "images/lux2.jpg", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$300 - $150" 
+            },
+            { 
+                src: "images/view.png", 
+                title: "Lagos -> Abu Dhabi",
+                price: "$100 - $50" 
+            },
+        ].map((deal, i) => (
+            <div key={i} className="relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+                <img
+                    src={deal.src}
+                    alt={`${deal.title} thumbnail`}
+                    className="w-full h-48 object-fit" // Adjust aspect ratio as needed
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                    <h3 className="font-bold">{deal.title}</h3>
+                    <p>{deal.price}</p>
+                    <button className="bg-white text-black px-2 py-1 mt-2 rounded transform transition-transform duration-200 hover:scale-105">Buy Now</button>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<section className="container mx-auto p-4 mt-8">
+    <h2 className="text-2xl font-bold mb-4">Get best Hotel Deal</h2>
+    <div className="grid grid-cols-4 gap-4">
+        {[
+            { 
+                src: "images/im.jpg", 
+                title: "Airport -> Tourism", 
+                price: "$5,000 - $2,000" 
+            },
+            { 
+                src: "images/ima.png", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$120 - $80" 
+            },
+            { 
+                src: "images/new.png", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$300 - $150" 
+            },
+            { 
+                src: "images/405.png", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$100 - $50" 
+            },
+        ].map((deal, i) => (
+            <div key={i} className="relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+                <img
+                    src={deal.src}
+                    alt={`${deal.title} thumbnail`}
+                    className="w-full h-48 object-fit" // Adjust aspect ratio as needed
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                    <h3 className="font-bold">{deal.title}</h3>
+                    <p>{deal.price}</p>
+                    <button className="bg-white text-black px-2 py-1 mt-2 rounded transform transition-transform duration-200 hover:scale-105">Buy Now</button>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<section className="container mx-auto p-4 mt-8">
+    <h2 className="text-2xl font-bold mb-4">Today's Interstate road Deals</h2>
+    <div className="grid grid-cols-4 gap-4">
+        {[
+            { 
+                src: "images/bus1.png", 
+                title: "Airport -> Tourism", 
+                price: "$5,000 - $2,000" 
+            },
+            { 
+                src: "images/bus2.png", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$120 - $80" 
+            },
+            { 
+                src: "images/bus3.png", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$300 - $150" 
+            },
+            { 
+                src: "images/bus4.png", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$100 - $50" 
+            },
+        ].map((deal, i) => (
+            <div key={i} className="relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+                <img
+                    src={deal.src}
+                    alt={`${deal.title} thumbnail`}
+                    className="w-full h-48 object-fit" // Adjust aspect ratio as needed
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                    <h3 className="font-bold">{deal.title}</h3>
+                    <p>{deal.price}</p>
+                    <button className="bg-white text-black px-2 py-1 mt-2 rounded transform transition-transform duration-200 hover:scale-105">Buy Now</button>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<section className="container mx-auto p-4 mt-8">
+    <h2 className="text-2xl font-bold mb-4">Today's Accessory Deals,</h2>
+    <div className="grid grid-cols-4 gap-4">
+        {[
+            { 
+                src: "images/dude.png", 
+                title: "e-hauling", 
+                price: "$5,000 - $2,000" 
+            },
+            { 
+                src: "images/dropoff.png", 
+                title: "Airport dropoff", 
+                price: "$120 - $80" 
+            },
+            { 
+                src: "images/dude.png", 
+                title: "Shared Ride", 
+                price: "$300 - $150" 
+            },
+            { 
+                src: "images/driver.png", 
+                title: "Airport Pickup", 
+                price: "$100 - $50" 
+            },
+        ].map((deal, i) => (
+            <div key={i} className="relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+                <img
+                    src={deal.src}
+                    alt={`${deal.title} thumbnail`}
+                    className="w-full h-48 object-fit" // Adjust aspect ratio as needed
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                    <h3 className="font-bold">{deal.title}</h3>
+                    <p>{deal.price}</p>
+                    <button className="bg-white text-black px-2 py-1 mt-2 rounded transform transition-transform duration-200 hover:scale-105">Buy Now</button>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+<section className="container mx-auto p-4 mt-8">
+    <h2 className="text-2xl font-bold mb-4">Today's Train Deals,</h2>
+    <div className="grid grid-cols-4 gap-4">
+        {[
+            { 
+                src: "images/train1.png", 
+                title: "Airport -> Tourism", 
+                price: "$5,000 - $2,000" 
+            },
+            { 
+                src: "images/train2.png", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$120 - $80" 
+            },
+            { 
+                src: "images/train3.png", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$300 - $150" 
+            },
+            { 
+                src: "images/train4.png", 
+                title: "Lagos -> Abu Dhabi", 
+                price: "$100 - $50" 
+            },
+        ].map((deal, i) => (
+            <div key={i} className="relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+                <img
+                    src={deal.src}
+                    alt={`${deal.title} thumbnail`}
+                    className="w-full h-48 object-fit" // Adjust aspect ratio as needed
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                    <h3 className="font-bold">{deal.title}</h3>
+                    <p>{deal.price}</p>
+                    <button className="bg-white text-black px-2 py-1 mt-2 rounded transform transition-transform duration-200 hover:scale-105">Book a seat</button>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+<section className="container mx-auto p-4 mt-8">
+    <h2  className="text-2xl font-bold mb-4 ">Today's <span className="text-purple-600 cursor-pointer">eride</span> Deals,</h2>
+    <div className="grid grid-cols-4 gap-4">
+        {[
+            { 
+                src: "images/dude.png", 
+                title: "e-hauling", 
+                price: "$5,000 - $2,000" 
+            },
+            { 
+                src: "images/dropoff.png", 
+                title: "Airport dropoff", 
+                price: "$120 - $80" 
+            },
+            { 
+                src: "images/dude.png", 
+                title: "Shared Ride", 
+                price: "$300 - $150" 
+            },
+            { 
+                src: "images/driver.png", 
+                title: "Airport Pickup", 
+                price: "$100 - $50" 
+            },
+        ].map((deal, i) => (
+            <div key={i} className="relative overflow-hidden transform transition-transform duration-200 hover:scale-105">
+                <img
+                    src={deal.src}
+                    alt={`${deal.title} thumbnail`}
+                    className="w-full h-48 object-fit" // Adjust aspect ratio as needed
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                    <h3 className="font-bold">{deal.title}</h3>
+                    <p>{deal.price}</p>
+                    <button className="bg-white text-black px-2 py-1 mt-2 rounded transform transition-transform duration-200 hover:scale-105">Buy Now</button>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<div className="container mx-auto p-4 p-8">
+                    <h1 className="text-2xl font-bold mb-4">Book an Hotel before leaving</h1>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        <div className="border p-4 flex flex-col md:flex-row items-center">
+                            <div className="flex-1">
+                                <h2 className="text-xl font-bold">Flight was canceled?</h2>
+                                <p>Save %50 upon booking any room through us today</p>
+                                <button className="text-white font-bold px-12 py-5 my-20 border rounded bg-blue-600 transform transition-transform duration-200 hover:scale-105"><a className="text-red-500">%50 </a>off to book</button>
+                            </div>
+                           
+                            <img src="images/skycrapper.jpg" alt="City skyline with modern buildings" className="w-full md:w-1/2 mt-4 md:mt-0 md:ml-4"/>
+                        </div>
+                        <div className="relative">
+                            <img src="images/lux.jpg" alt="Marina with boats and modern buildings" className="w-full"/>
+                            <div className="absolute inset-0 bg-blue-900 bg-opacity-50 text-white p-4 flex items-center">
+                                <p>Get whooping discount for booking our hotel Essential for every of your flight that was booked through us and was canceled Get whooping discount for booking</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 className="text-2xl font-bold mb-4">Book an Hotel before leaving</h1>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="relative col-span-2">
+                            <img src="https://placehold.co/600x400" alt="City skyline with modern buildings" className="w-full"/>
+                            <div className="absolute inset-0 bg-black bg-opacity-50 text-white p-4 flex flex-col justify-center">
+                                <h2 className="text-3xl font-bold">Thousands of 5-star reviews</h2>
+                                <p>Thanks to our first-className quality and great value fares...</p>
+                                <button className="bg-blue-700 text-white px-4 py-2 mt-4 w-max transform transition-transform duration-200 hover:scale-105">Book now</button>
+                            </div>
+                        </div>
+                        <div className="bg-gray-100 p-4">
+                            <h2 className="text-xl font-bold text-blue-700">You will be amazed by with we have prepared for you</h2>
+                            <p className="mt-2">Vestibulum dictum ultrices elit a luctus. Sed in ante ut leo congue posuere at sit amet ligula. Pellentesque eget augue nec nisl sodales blandit sed et sem.</p>
+                        </div>
+                        <img src="https://placehold.co/300x200" alt="White mosque with domes" className="w-full"/>
+                        <img src="https://placehold.co/300x200" alt="Beach with modern buildings in the background" className="w-full"/>
+                        <img src="https://placehold.co/300x200" alt="Marina with boats and ferris wheel" className="w-full"/>
+                    </div>
+                </div>
+
+                <div className="container mx-auto p-4 p-8">
+                    <h1 className="text-2xl font-bold mb-2">Explore more with essential</h1>
+                    <p className="text-gray-600 mb-6">Promotions, deals and special offers for you</p>
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                        {[...Array(2)].map((_, index) => (
+                            <div key={index} className="relative">
+                                <img src="images/people.png" alt="Group of people smiling outdoors" className="w-full h-auto"/>
+                                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white p-4">
+                                    <h2 className="text-xl font-bold mb-2">Logo</h2>
+                                    <p className="text-center mb-4">Get evidence of existence and visibility for everyone and friends and family and dissolve every form of doubt by studying on this people...</p>
+                                    <button className="bg-white text-black px-4 py-2 transform transition-transform duration-200 hover:scale-105">EXPLORE MORE</button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="grid grid-cols-3 gap-4 mb-8">
+                        {[...Array(3)].map((_, index) => (
+                            <div key={index} className="relative">
+                                <img src="images/people.png" alt="Group of people smiling outdoors" className="w-full h-auto"/>
+                                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white p-4">
+                                    <h2 className="text-xl font-bold mb-2">Logo</h2>
+                                    <p className="text-center mb-4">Get evidence of existence and visibility for everyone and friends and family and dissolve every form of doubt by studying on this people...</p>
+                                    <button className="bg-white text-black px-4 py-2 transform transition-transform duration-200 hover:scale-105">EXPLORE MORE</button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <h2 className="text-xl font-bold mb-2">Groups you may like</h2>
+                    <div className="flex justify-between items-center mb-4">
+                        <p className="text-gray-600">Groups you may like</p>
+                        <a href="groups.html" className="text-red-500 transform transition-transform duration-200 hover:scale-105">See more</a>
+                    </div>
+                    <div className="grid grid-cols-5 gap-4">
+                        {['Essential staff', 'Health group', 'Everyday news', 'Computer science', 'Business group'].map((group, index) => (
+                            <div key={index} className="border rounded-lg overflow-hidden">
+                                <img src="images/student.png" alt="Group of people discussing" className="w-full h-auto"/>
+                                <div className="p-4">
+                                    <h3 className="text-lg font-bold mb-1">{group}</h3>
+                                    <p className="text-gray-600 text-sm mb-2">1 Member  0 Posts today</p>
+                                    <button className="bg-blue-600 text-white px-4 py-2 transform transition-transform duration-200 hover:scale-105">Join</button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+                <div className="font-sans">
+                    <div className="bg-gray-300 text-center py-12">
+                        <h1 className="text-2xl font-bold py-10">Advert</h1>
+                    </div>
+                    <div className="flex justify-center py-8">
+                        <img src="images/omo.png" alt="A student with a backpack looking at a flight information board" className="w-1/2"/>
+                        <div className="ml-8">
+                            <h2 className="text-3xl font-bold">Students Wooping Discount</h2>
+                            <p className="mt-4 text-lg">Travel to anywhere in the world at the best discount possible by being a student</p>
+                            <button className="mt-8 bg-blue-900 text-white py-2 px-4 rounded transform transition-transform duration-200 hover:scale-105">Book now</button>
+                        </div>
+                    </div>
+                    <div className="container mx-auto p-4 px-8">
+                        <h2 className="text-2xl font-bold">News</h2>
+                        <h3 className="mt-4 text-xl font-semibold">Top Topic</h3>
+                        <div className="grid grid-cols-3 gap-4 mt-4">
+                            <div className="flex">
+                                <img src="images/news1.png" alt="Business news image" className="w-24 h-24"/>
+                                <div className="ml-4">
+                                    <h4 className="font-bold">Business News</h4>
+                                    <p>Lorem ipsum dolor sit consectetur. Et rhoncus nunc dictum massa.</p>
+                                </div>
+                            </div>
+                            <div className="flex">
+                                <img src="images/news2.png" alt="News image" className="w-24 h-24"/>
+                                <div className="ml-4">
+                                    <h4 className="font-bold">Lorem ipsum dolor sit</h4>
+                                    <p>Lorem ipsum dolor sit consectetur. Et rhoncus nunc dictum massa.</p>
+                                </div>
+                            </div>
+                            <div className="flex">
+                                <img src="images/news3.png" alt="News image" className="w-24 h-24"/>
+                                <div className="ml-4">
+                                    <h4 className="font-bold">Lorem ipsum dolor sit</h4>
+                                    <p>Lorem ipsum dolor sit consectetur. Et rhoncus nunc dictum massa.</p>
+                                </div>
+                            </div>
+                            <div className="flex">
+                                <img src="images/news1.png" alt="Business news image" className="w-24 h-24"/>
+                                <div className="ml-4">
+                                    <h4 className="font-bold">Business News</h4>
+                                    <p>Lorem ipsum dolor sit consectetur. Et rhoncus nunc dictum massa.</p>
+                                </div>
+                            </div>
+                            <div className="flex">
+                                <img src="images/news2.png" alt="News image" className="w-24 h-24"/>
+                                <div className="ml-4">
+                                    <h4 className="font-bold">Lorem ipsum dolor sit</h4>
+                                    <p>Lorem ipsum dolor sit consectetur. Et rhoncus nunc dictum massa.</p>
+                                </div>
+                            </div>
+                            <div className="flex">
+                                <img src="images/news3.png" alt="News image" className="w-24 h-24"/>
+                                <div className="ml-4">
+                                    <h4 className="font-bold">Lorem ipsum dolor sit</h4>
+                                    <p>Lorem ipsum dolor sit consectetur. Et rhoncus nunc dictum massa.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="text-center py-8 container p-8">
+                        <h2 className="text-xl font-bold">You are 90% MORE likely to get the best flight deals by subscribing</h2>
+                        <p className="mt-4">Enter your email and we'll send them your way.</p>
+                        <div className="mt-4 flex justify-center">
+                            <input type="email" placeholder="Enter your email" className="border border-gray-400 py-2 px-4 w-1/3  focus:outline-none focus:shadow-lg transition-shadow duration-300 ease-in-out"/>
+                            <button className="bg-blue-900 text-white py-2 px-4 transform transition-transform duration-200 hover:scale-105">Search Flight</button>
+                        </div>
+                    </div>
+                    <div className="text-center py-4 text-sm text-gray-600">
+                        <p>Your privacy is important to us, so we'll never spam you or share your info with third parties. Take a look at our privacy policy. You can unsubscribe at any time.</p>
+                    </div>
+                    
+                    <footer className=" relative flex-wrap bg-blue-900 text-white py-8">
+                    <div className="p-8">
+                    <div className="flex justify-between items-center mb-8">
+                        <div className="flex space-x-4">
+                            <img src="https://placehold.co/40x25" alt="Spanish flag" className="w-10 h-6"/>
+                            <img src="https://placehold.co/40x25" alt="Italian flag" className="w-10 h-6"/>
+                            <img src="https://placehold.co/40x25" alt="German flag" className="w-10 h-6"/>
+                            <img src="https://placehold.co/40x25" alt="French flag" className="w-10 h-6"/>
+                        </div>
+                        <div className="flex space-x-4">
+                            <i className="fab fa-twitter"></i>
+                            <i className="fab fa-whatsapp"></i>
+                            <i className="fab fa-facebook-f"></i>
+                            <i className="fab fa-instagram"></i>
+                        </div>
+                    </div>
+                    <div className="relative justify-between">
+                        <div>
+                            <h1 className="text-4xl font-bold mb-2">Logo</h1>
+                            <p>Book tickets & track your coach anytime, anywhere.</p>
+                        </div>
+                        <div className="flex space-x-16">
+                            <div>
+                                <h2 className="font-bold mb-2">Quick Links</h2>
+                                <ul className="space-y-1">
+                                    <li>• Corporate Info</li>
+                                    <li>• Accessibility</li>
+                                    <li>• Jobs</li>
+                                    <li>• Ad Choices</li>
+                                    <li>• Privacy Policy</li>
+                                    <li>• CA Notice</li>
+                                    <li>• Terms of Service - NEW</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul className="space-y-1 mt-8">
+                                    <li>• NBC App</li>
+                                    <li>• Peacock</li>
+                                    <li>• Advertise</li>
+                                    <li>• Closed Captioning</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul className="space-y-1 mt-8">
+                                    <li>• Advertise</li>
+                                    <li>• Link TV Provider</li>
+                                    <li>• FAQ</li>
+                                    <li>• Casting</li>
+                                    <li>• Contact Us</li>
+                                    <li>• Local Schedule</li>
+                                    <li>• Tickets and NBC Studio Tour</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </footer>
+                    </div>
+                </div>
+            );
+        };
+
+        // React 18 Rendering
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
+    </script>
+</body>
+</html>
