@@ -11,6 +11,15 @@
         body {
             font-family: 'Roboto', sans-serif;
         }
+
+        .scrollbar {
+    -ms-overflow-style: relative; /* Internet Explorer 10+ */
+    scrollbar-width: relative; /* Firefox */
+}
+.scrollbar::-webkit-scrollbar {
+    display: relative; /* Safari and Chrome */
+}
+
     </style>
 </head>
 <body>
@@ -144,10 +153,10 @@ const App = () => {
                             className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
                             style={{ top: '100%', left: 0 }}
                         >
-                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="services.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
                             <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
                             <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
-                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="hairdresser.html" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
                             <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
                             <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
                             <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
@@ -212,10 +221,10 @@ const App = () => {
     <option value="" className="bg-white text-black">
       Jobs
     </option>
-    <option value="/post-job" className="bg-white text-black">
+    <option value="postjob.html" className="bg-white text-black">
       Post a Job
     </option>
-    <option value="/apply-job" className="bg-white text-black">
+    <option value="apply-job.html" className="bg-white text-black">
       Apply for a Job
     </option>
   </select>
@@ -231,7 +240,7 @@ const App = () => {
     <option value="" className="bg-white text-black">
       Service Provider
     </option>
-    <option value="/request-service" className="bg-white text-black">
+    <option value="services.html" className="bg-white text-black">
       Request for Service
     </option>
     <option value="/sell-service" className="bg-white text-black">
@@ -242,12 +251,12 @@ const App = () => {
 
                             </div>
                             <div className="w-1/2">
-                                <img src="https://placehold.co/400x300" alt="Person working on a computer" className="rounded border border-gray-300"/>
+                                <img src="images/gg.png" alt="Person working on a computer" className="rounded border border-gray-300"/>
                             </div>
                         </section>
                         <section className="flex justify-between items-center py-8 container mx-auto px-4">
                             <div className="w-1/2">
-                                <img src="https://placehold.co/400x300" alt="Group of people in a meeting" className="rounded border border-gray-300"/>
+                                <img src="images/g2.png" alt="Group of people in a meeting" className="rounded border border-gray-300"/>
                             </div>
                             <div className="w-1/2">
                                 <h1 className="text-4xl font-bold text-blue-900">Make extra cash even while in school</h1>
@@ -259,12 +268,12 @@ const App = () => {
     Connecting you to the biggest opportunities around you
   </h2>
   <div className="grid grid-cols-6 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-6 gap-4 place-items-center">
-    <img src="https://placehold.co/150x50" alt="Rentalcars.com logo" className="w-24 md:w-36 lg:w-40" />
-    <img src="https://placehold.co/150x50" alt="Thrifty logo" className="w-24 md:w-36 lg:w-40" />
-    <img src="https://placehold.co/150x50" alt="Sixt logo" className="w-24 md:w-36 lg:w-40" />
-    <img src="https://placehold.co/150x50" alt="Europcar logo" className="w-24 md:w-36 lg:w-40" />
-    <img src="https://placehold.co/150x50" alt="Sixt logo" className="w-24 md:w-36 lg:w-40" />
-    <img src="https://placehold.co/150x50" alt="Europcar logo" className="w-24 md:w-36 lg:w-40" />
+    <img src="images/Rectangle 4481.png" alt="Rentalcars.com logo" className="w-24 md:w-36 lg:w-40" />
+    <img src="images/image 5.png" alt="Thrifty logo" className="w-24 md:w-36 lg:w-40" />
+    <img src="images/image 6.png" alt="Sixt logo" className="w-24 md:w-36 lg:w-40" />
+    <img src="images/image 7.png" alt="Europcar logo" className="w-24 md:w-36 lg:w-40" />
+    <img src="images/image 6.png" alt="Sixt logo" className="w-24 md:w-36 lg:w-40" />
+    <img src="images/image 7.png" alt="Europcar logo" className="w-24 md:w-36 lg:w-40" />
   </div>
 </section>
 
@@ -290,21 +299,30 @@ const App = () => {
                     </main>
                     
                     <section className="relative mt-8">
-                        <img src="https://placehold.co/1920x500" alt="Background image of people in a meeting" className="w-full h-64 object-cover" />
+                        <img src="images/Rectangle 4480.png" alt="Background image of people in a meetimages/Rectangle 4519.png object-cover" />
                         <div className="absolute inset-0 bg-blue-900 bg-opacity-50 flex flex-col items-center justify-center text-white">
                             <h1 className="text-4xl font-bold">transit to any where you want with comfy</h1>
                             <p className="mt-2">Free cancellations on most bookings with over 60,000+ locations</p>
                         </div>
                     </section>
-                    <section className="my-12 flex justify-center items-center container mx-auto px-4">
-                        <div className="flex items-center space-x-8">
-                            <img src="https://placehold.co/300x200" alt="Person getting their hair done" className="border-2 border-blue-900 rounded-md" />
-                            <div>
-                                <h2 className="text-3xl font-bold text-blue-900">Maximize your skills or meet people with skills you need</h2>
-                                <p className="mt-2">Get over 3000 jobs oppurtunites at your finger tip, just one application away</p>
-                            </div>
-                        </div>
-                    </section>
+                    <section className="flex justify-between items-center py-8 container mx-auto px-4 space-x-8">
+    <div className="w-1/2">
+        <img 
+            src="images/dd.png" 
+            alt="Person getting their hair done" 
+            className="rounded border border-gray-300 w-full"
+        />
+    </div>
+    <div className="w-1/2">
+        <h1 className="text-3xl md:text-4xl font-bold text-blue-900">
+            Maximize your skills or meet people with skills you need
+        </h1>
+        <p className="text-gray-700 mt-4">
+            Get over 3000 job opportunities at your fingertips, just one application away
+        </p>
+    </div>
+</section>
+
                     <section className="my-12 px-4 container mx-auto px-4">
                         <div className="flex justify-between items-center mb-4">
                             <h3 className="text-xl font-bold">Peoples best choices</h3>
@@ -323,9 +341,9 @@ const App = () => {
                             </div>
                             </div>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="flex gap-4 overflow-x-auto scrollbar">
                             <div className="border rounded-md p-4">
-                                <img src="https://placehold.co/300x200" alt="Person working on a laptop" className="w-full h-40 object-cover rounded-md" />
+                                <img src="images/Rectangle 4519.png" alt="Person working on a laptop" className="w-full h-40 object-cover rounded-md" />
                                 <div className="mt-4">
                                     <h4 className="text-lg font-bold">Receptionist</h4>
                                     <p className="text-gray-600">UUC Internation</p>
@@ -337,7 +355,7 @@ const App = () => {
                                 </div>
                             </div>
                             <div className="border rounded-md p-4">
-                                <img src="https://placehold.co/300x200" alt="Person working on a laptop" className="w-full h-40 object-cover rounded-md" />
+                                <img src="images/Rectangle 4519.png" alt="Person working on a laptop" className="w-full h-40 object-cover rounded-md" />
                                 <div className="mt-4">
                                     <h4 className="text-lg font-bold">Receptionist</h4>
                                     <p className="text-gray-600">UUC Internation</p>
@@ -349,7 +367,7 @@ const App = () => {
                                 </div>
                             </div>
                             <div className="border rounded-md p-4">
-                                <img src="https://placehold.co/300x200" alt="Person working on a laptop" className="w-full h-40 object-cover rounded-md" />
+                                <img src="images/Rectangle 4519.png" alt="Person working on a laptop" className="w-full h-40 object-cover rounded-md" />
                                 <div className="mt-4">
                                     <h4 className="text-lg font-bold">Receptionist</h4>
                                     <p className="text-gray-600">UUC Internation</p>
@@ -396,39 +414,44 @@ const App = () => {
                             <h1 className="text-4xl font-bold mb-2">Logo</h1>
                             <p>Book tickets & track your coach anytime, anywhere.</p>
                         </div>
-                        <div className="flex space-x-16">
-                            <div>
-                                <h2 className="font-bold mb-2">Quick Links</h2>
-                                <ul className="space-y-1">
-                                    <li>• Corporate Info</li>
-                                    <li>• Accessibility</li>
-                                    <li>• Jobs</li>
-                                    <li>• Ad Choices</li>
-                                    <li>• Privacy Policy</li>
-                                    <li>• CA Notice</li>
-                                    <li>• Terms of Service - NEW</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• NBC App</li>
-                                    <li>• Peacock</li>
-                                    <li>• Advertise</li>
-                                    <li>• Closed Captioning</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• Advertise</li>
-                                    <li>• Link TV Provider</li>
-                                    <li>• FAQ</li>
-                                    <li>• Casting</li>
-                                    <li>• Contact Us</li>
-                                    <li>• Local Schedule</li>
-                                    <li>• Tickets and NBC Studio Tour</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {/* Column 1 */}
+  <div>
+    <h2 className="font-bold mb-2">Quick Links</h2>
+    <ul className="space-y-1">
+      <li>• Corporate Info</li>
+      <li>• Accessibility</li>
+      <li>• Jobs</li>
+      <li>• Ad Choices</li>
+      <li>• Privacy Policy</li>
+      <li>• CA Notice</li>
+      <li>• Terms of Service - NEW</li>
+    </ul>
+  </div>
+
+  {/* Column 2 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• NBC App</li>
+      <li>• Peacock</li>
+      <li>• Advertise</li>
+      <li>• Closed Captioning</li>
+    </ul>
+  </div>
+
+  {/* Column 3 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• Advertise</li>
+      <li>• Link TV Provider</li>
+      <li>• FAQ</li>
+      <li>• Casting</li>
+      <li>• Contact Us</li>
+      <li>• Local Schedule</li>
+      <li>• Tickets and NBC Studio Tour</li>
+    </ul>
+  </div>
+</div>
                     </div>
                 </div>
                     </footer>
@@ -437,7 +460,10 @@ const App = () => {
             );
         };
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        // React 18 Rendering
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
     </script>
 </body>
 </html>

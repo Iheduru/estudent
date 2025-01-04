@@ -77,28 +77,28 @@ const App = () => {
                 {
                     category: "Today's Flight tranport, interstate road transport, train, eride Deals,",
                     items: [
-                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
-                        { title: "Lagos", subtitle: "Abu Dhabi", price: "", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
-                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
-                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
+                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "images/skycrapper.jpg" },
+                        { title: "Lagos", subtitle: "Abu Dhabi", price: "", discountPrice: "$2,000", img: "images/lux.jpg" },
+                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "images/lux2.jpg" },
+                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "images/view.png" },
                     ]
                 },
                 {
                     category: "Get best Hotel Deal",
                     items: [
-                        { title: "Airport", subtitle: "Tourism 1", price: "$5,000", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
-                        { title: "Lagos", subtitle: "Abu Dhabi", price: "", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
-                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
-                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
+                        { title: "Airport", subtitle: "Tourism 1", price: "$5,000", discountPrice: "$2,000", img: "images/im.jpg" },
+                        { title: "Lagos", subtitle: "Abu Dhabi", price: "", discountPrice: "$2,000", img: "images/ima.png" },
+                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "images/new.png" },
+                        { title: "Lagos", subtitle: "Abu Dhabi", price: "$5,000", discountPrice: "$2,000", img: "images/405.png" },
                     ]
                 },
                 {
                     category: "Today's <span class='text-purple-600'>eride</span> Deals,",
                     items: [
-                        { title: "e-hauling", subtitle: "", price: "$5,000", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
-                        { title: "Airport dropoff", subtitle: "", price: "", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
-                        { title: "Shared Ride", subtitle: "", price: "$5,000", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
-                        { title: "Airport Pickup", subtitle: "", price: "$5,000", discountPrice: "$2,000", img: "https://placehold.co/300x200" },
+                        { title: "e-hauling", subtitle: "", price: "$5,000", discountPrice: "$2,000", img: "images/dude.png" },
+                        { title: "Airport dropoff", subtitle: "", price: "", discountPrice: "$2,000", img: "images/dropoff.png" },
+                        { title: "Shared Ride", subtitle: "", price: "$5,000", discountPrice: "$2,000", img: "images/dude.png" },
+                        { title: "Airport Pickup", subtitle: "", price: "$5,000", discountPrice: "$2,000", img: "images/driver.png" },
                     ]
                 }
             ];
@@ -174,10 +174,10 @@ const App = () => {
                             className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
                             style={{ top: '100%', left: 0 }}
                         >
-                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="services.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
                             <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
                             <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
-                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="hairdresser.html" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
                             <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
                             <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
                             <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
@@ -228,7 +228,7 @@ const App = () => {
 
             <section>
                 <div className="relative">
-                        <img src="https://placehold.co/1920x1080" alt="Background image of flight attendants" className="w-full h-100 object-cover" />
+                        <img src="images/Rectangle 3921.png" alt="Background image of flight attendants" className="w-full h-100 object-cover" />
                         <div className="absolute inset-0 bg-blue-900 bg-opacity-90 flex flex-col items-center justify-center text-white p-6">
                             <div>
                     <div className="container mx-auto p-4 flex space-x-4 mb-4">
@@ -269,24 +269,8 @@ const App = () => {
                     </div>
                         </div>
                     </div>
-                    <div className="bg-gradient-to-r from-blue-100 to-blue-300 py-16">
-                        <div className="text-center mb-8">
-                            <h2 className="text-2xl font-bold">3 steps to book an airport flight</h2>
-                        </div>
-                        <div className="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-8">
-                            <div className="text-center">
-                                <h3 className="text-xl font-bold">Step 1</h3>
-                                <p>Enter your pick-up point, date and time, select your car.</p>
-                            </div>
-                            <div className="text-center">
-                                <h3 className="text-xl font-bold">Step 2</h3>
-                                <p>Verify the booking details and select your preferred payment method.</p>
-                            </div>
-                            <div className="text-center">
-                                <h3 className="text-xl font-bold">Step 3</h3>
-                                <p>Your driver will pick you up at the given location and time.</p>
-                            </div>
-                        </div>
+                    <div className="relative">
+                        <img src="images/gradient.png" alt="Background image of flight attendants" className="w-full h-100 object-cover" />
                     </div>
 
                     <div className="p-6 md:p-12">
@@ -305,7 +289,7 @@ const App = () => {
                             <p className="mb-4">
                                 Vestibulum dictum ultrices elit a luctus. Sed in ante ut leo congue posuere at sit amet ligula. Pellentesque eget augue nec nisl sodales blandit sed et sem.
                             </p>
-                            <div className="border-b-4 border-blue-900 w-16"></div>
+                            <div className="border-b-4 border-blue-900 w-full"></div>
                         </div>
                     </div>
                     <div className="mt-12">
@@ -322,33 +306,59 @@ const App = () => {
                     </div>
                 </div>
                 <div className="p-4">
-                    <h1 className="text-2xl font-bold mb-4">Book an Hotel before leaving</h1>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div className="md:col-span-2 relative">
-                            <img src="https://placehold.co/600x400" alt="Skyscrapers with a clear sky" className="w-full h-full object-cover rounded-lg" />
-                            <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 rounded-lg">
-                                <h2 className="text-white text-3xl font-bold">Thousands of 5-star reviews</h2>
-                                <p className="text-white text-lg">Thanks to our first-class quality and great value fares...</p>
-                                <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded">Book now</button>
-                            </div>
-                        </div>
-                        <div className="bg-gray-100 p-4 rounded-lg">
-                            <h2 className="text-blue-600 text-xl font-bold mb-2">You will be amazed by with we have prepared for you</h2>
-                            <p className="text-gray-700 mb-4">Vestibulum dictum ultrices elit a luctus. Sed in ante ut leo congue posuere at sit amet ligula. Pellentesque eget augue nec nisl sodales blandit sed et sem.</p>
-                            <div className="h-1 bg-blue-600 w-16"></div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:col-span-3">
-                            <img src="https://placehold.co/300x200" alt="White mosque with blue sky" className="w-full h-full object-cover rounded-lg" />
-                            <img src="https://placehold.co/300x200" alt="City skyline with beach" className="w-full h-full object-cover rounded-lg" />
-                            <img src="https://placehold.co/300x200" alt="Marina with boats and ferris wheel" className="w-full h-full object-cover rounded-lg" />
-                        </div>
-                    </div>
-                </div>
+    <h1 className="text-2xl font-bold mb-4">Book an Hotel before leaving</h1>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="md:col-span-2 relative h-64 md:h-72">
+            <img 
+                src="images/skycrapper.jpg" 
+                alt="Skyscrapers with a clear sky" 
+                className="w-full h-full object-cover rounded-lg" 
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 rounded-lg">
+                <h2 className="text-white text-3xl font-bold">Thousands of 5-star reviews</h2>
+                <p className="text-white text-lg text-center px-4">
+                    Thanks to our first-class quality and great value fares...
+                </p>
+                <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded">Book now</button>
+            </div>
+        </div>
+
+        <div className="bg-gray-100 p-4 rounded">
+            <h2 className="text-blue-600 text-xl font-bold mb-2">
+                You will be amazed by what we have prepared for you
+            </h2>
+            <p className="text-gray-700 mb-4">
+                Vestibulum dictum ultrices elit a luctus. Sed in ante ut leo congue posuere at sit amet ligula.
+                Pellentesque eget augue nec nisl sodales blandit sed et sem.
+            </p>
+            <div className="h-1 bg-blue-600 w-full"></div>
+        </div>
+
+        <div div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:col-span-3">
+            <img 
+                src="images/view.png" 
+                alt="White mosque with blue sky" 
+                className="w-full h-48 object-cover rounded-lg" 
+            />
+            <img 
+                src="images/beach.png" 
+                alt="City skyline with beach" 
+                className="w-full h-48 object-cover rounded-lg" 
+            />
+            <img 
+                src="images/lux.jpg" 
+                alt="Marina with boats and ferris wheel" 
+                className="w-full h-48 object-cover rounded-lg" 
+            />
+        </div>
+    </div>
+</div>
+
                 <div className="p-4">
                     {deals.map((deal, index) => (
                         <div key={index} className="mb-8">
                             <h2 className="text-xl font-bold mb-4" dangerouslySetInnerHTML={{ __html: deal.category }}></h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-4">
                                 {deal.items.map((item, idx) => (
                                     <div key={idx} className="relative">
                                         <img src={item.img} alt={`${item.title} to ${item.subtitle}`} className="w-full h-48 object-cover" />
@@ -386,10 +396,10 @@ const App = () => {
                     <div className="p-8">
                     <div className="flex justify-between items-center mb-8">
                         <div className="flex space-x-4">
-                            <img src="https://placehold.co/40x25" alt="Spanish flag" className="w-10 h-6"/>
-                            <img src="https://placehold.co/40x25" alt="Italian flag" className="w-10 h-6"/>
-                            <img src="https://placehold.co/40x25" alt="German flag" className="w-10 h-6"/>
-                            <img src="https://placehold.co/40x25" alt="French flag" className="w-10 h-6"/>
+                            <img src="images/spain.png" alt="Spanish flag" className="w-10 h-6"/>
+                            <img src="images/italy.png" alt="Italian flag" className="w-10 h-6"/>
+                            <img src="images/germany.png" alt="German flag" className="w-10 h-6"/>
+                            <img src="images/france.png" alt="French flag" className="w-10 h-6"/>
                         </div>
                         <div className="flex space-x-4">
                             <i className="fab fa-twitter"></i>
@@ -403,39 +413,44 @@ const App = () => {
                             <h1 className="text-4xl font-bold mb-2">Logo</h1>
                             <p>Book tickets & track your coach anytime, anywhere.</p>
                         </div>
-                        <div className="flex space-x-16">
-                            <div>
-                                <h2 className="font-bold mb-2">Quick Links</h2>
-                                <ul className="space-y-1">
-                                    <li>• Corporate Info</li>
-                                    <li>• Accessibility</li>
-                                    <li>• Jobs</li>
-                                    <li>• Ad Choices</li>
-                                    <li>• Privacy Policy</li>
-                                    <li>• CA Notice</li>
-                                    <li>• Terms of Service - NEW</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• NBC App</li>
-                                    <li>• Peacock</li>
-                                    <li>• Advertise</li>
-                                    <li>• Closed Captioning</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• Advertise</li>
-                                    <li>• Link TV Provider</li>
-                                    <li>• FAQ</li>
-                                    <li>• Casting</li>
-                                    <li>• Contact Us</li>
-                                    <li>• Local Schedule</li>
-                                    <li>• Tickets and NBC Studio Tour</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {/* Column 1 */}
+  <div>
+    <h2 className="font-bold mb-2">Quick Links</h2>
+    <ul className="space-y-1">
+      <li>• Corporate Info</li>
+      <li>• Accessibility</li>
+      <li>• Jobs</li>
+      <li>• Ad Choices</li>
+      <li>• Privacy Policy</li>
+      <li>• CA Notice</li>
+      <li>• Terms of Service - NEW</li>
+    </ul>
+  </div>
+
+  {/* Column 2 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• NBC App</li>
+      <li>• Peacock</li>
+      <li>• Advertise</li>
+      <li>• Closed Captioning</li>
+    </ul>
+  </div>
+
+  {/* Column 3 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• Advertise</li>
+      <li>• Link TV Provider</li>
+      <li>• FAQ</li>
+      <li>• Casting</li>
+      <li>• Contact Us</li>
+      <li>• Local Schedule</li>
+      <li>• Tickets and NBC Studio Tour</li>
+    </ul>
+  </div>
+</div>
                     </div>
                 </div>
                     </footer>
@@ -443,7 +458,10 @@ const App = () => {
             );
         };
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        // React 18 Rendering
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
     </script>
 </body>
 </html>

@@ -91,7 +91,7 @@ const App = () => {
                     <div className="relative">
                         <a
                             href="#"
-                            className="text-white font-bold border rounded bg-blue-900 px-3"
+                            className="text-gray-600 hover:text-gray-900"
                             onClick={toggleRideDropdown}
                         >
                             Ride <i className={`fas fa-caret-${isRideOpen ? "up" : "down"} ml-1`} id="down"></i>
@@ -103,7 +103,7 @@ const App = () => {
                             <div className="flex flex-col space-y-2 px-2">
                                 <a href="ride.html" className="block text-black hover:bg-gray-200 p-2">All</a>
                                 <a href="bus.html" className="block text-black hover:bg-gray-200 p-2">Bus</a>
-                                <a href="cars.html" className="block text-white font-bold border rounded bg-blue-900 px-3">Car</a>
+                                <a href="cars.html" className="block text-black hover:bg-gray-200 p-2">Car</a>
                                 <a href="plane.html" className="block text-black hover:bg-gray-200 p-2">Plane</a>
                             </div>
                         </div>
@@ -135,7 +135,7 @@ const App = () => {
                     {/* Services Dropdown */}
                     <div className="relative">
                         <button
-                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            className="text-white font-bold border rounded bg-blue-900 px-3"
                             onClick={toggleServicesDropdown}
                         >
                             Services <i className={`fas fa-caret-${isServicesOpen ? "up" : "down"} ml-1`}></i>
@@ -144,7 +144,7 @@ const App = () => {
                             className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
                             style={{ top: '100%', left: 0 }}
                         >
-                            <a href="services.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="services.html" className="block text-white font-bold border rounded bg-blue-900 px-3">All</a>
                             <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
                             <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
                             <a href="hairdresser.html" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
@@ -195,114 +195,199 @@ const App = () => {
                     <i className="fa fa-bars"></i>
                 </button>
             </header>
-         
-            <section>
-    <div className="relative">
-        <img src="images/Rectangle 4585.png" alt="A collage of images depicting various forms of indecent activities" className="w-full h-3/4 object-cover" />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-start p-6">
-            <h1 className="text-white text-2xl md:text-4xl font-bold">Report all sorts of indecent activities in any school here</h1>
-            <p className="text-white mt-2">It is possible to achieve academic excellence easily through financial scholarships. You are invited to apply Scholarships for future students at Kansas...</p>
-        </div>
-    </div>
-    <div className="bg-white p-6 md:p-12">
-        <h2 className="text-2xl md:text-3xl font-bold text-blue-700">Reporting to Law Enforcement</h2>
-        <div className="flex items-center justify-between mt-4">
-            <div className="flex space-x-4">
-                <a href="#" className="text-gray-500"><i className="fab fa-facebook-f"></i></a>
-                <a href="#" className="text-gray-500"><i className="fab fa-twitter"></i></a>
-                <a href="#" className="text-gray-500"><i className="fab fa-pinterest"></i></a>
-                <a href="#" className="text-gray-500"><i className="fab fa-tumblr"></i></a>
-            </div>
-            <button className="bg-blue-800 text-white px-6 py-2 rounded-full ml-auto"><a href="incident.html">REPORT</a></button>
-        </div>
-        <p className="mt-4 text-gray-700">The decision to report to law enforcement is entirely yours. Some survivors say that reporting and seeking justice helped them recover and regain a sense of control over their lives. Understanding how to report and learning more about the experience can take away some of the unknowns and help you feel more prepared.</p>
-        <h3 className="mt-6 text-xl font-bold text-gray-800">How do I report sexual assault?</h3>
-        <p className="mt-2 text-gray-700">You have several options for reporting sexual assault:</p>
-        <ul className="list-disc list-inside mt-2 text-gray-700">
-            <li><strong>Call 911.</strong> If you are in immediate danger, dial 911. Help will come to you, wherever you are.</li>
-            <li><strong>Contact the local police department.</strong> Call the direct line of your local police station or visit the station in person. If you are on a college campus you may also be able to contact campus-based law enforcement.</li>
-            <li><strong>Visit a medical center.</strong> If you are being treated for injuries resulting from sexual assault, tell a medical professional that you wish to report the crime. You can also choose to have a sexual assault forensic exam. To find an appropriate local health facility that is prepared to care for survivors, call the National Sexual Assault Hotline 800.656.HOPE (4673).</li>
-        </ul>
 
+            <section>
+  <div className="relative mb-6">
+    <img src="images/hap.jpg" alt="Background" className="w-full h-52 object-cover" />
+    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div className="text-white text-center">
+        <h1 className="text-3xl font-bold">Connecting you with skilled professionals to handle all your essential needs</h1>
+        <p className="mt-2">Look no further we have you covered</p>
+      </div>
     </div>
-    <div className="max-w-4xl mx-auto">
-                    <p className="mb-4">
-                        To learn more about the options in your area, call the National Sexual Assault Hotline at 800.656.HOPE (4673). You'll be connected to a staff member from a <a href="#" className="text-blue-600 underline">local sexual assault service provider</a> who will walk you through the process of getting help and reporting to law enforcement at your own pace. In most areas, there are specific law enforcement officers who are trained to interact with sexual assault survivors. Service providers can connect you to these officers, and might also send a trained advocate to accompany you through the reporting process.
-                    </p>
-                    <h2 className="text-2xl font-bold mb-2">Who will I be talking to?</h2>
-                    <p className="mb-4">
-                        In most areas, there are specific law enforcement officers who are trained to interact with survivors of sexual assault. In addition, many law enforcement agencies participate in Sexual Assault Response Teams (SARTs), which provide a survivor-centered, coordinated response to sexual assault. SARTs incorporate medical personnel, law enforcement, and sexual assault service providers in your area. They work together to organize the investigation, reduce repetition of questions and interviews, and facilitate communication among all agencies involved.
-                    </p>
-                    <p className="mb-4">
-                        Learn more about <a href="#" className="text-blue-600 underline">communicating with law enforcement</a>.
-                    </p>
-                    <h2 className="text-2xl font-bold mb-2">Is there a time limit on reporting to the police?</h2>
-                    <p className="mb-4">
-                        There is no limitation on when a victim can report a crime to police. However, in many states, there is a limitation on when charges can be filed and a case can be prosecuted. This is called the statute of limitations. Statutes of limitation vary by state, type of crime, age of the victim, and various other factors. Visit RAINN's <a href="#" className="text-blue-600 underline">State Law Database</a> to learn more about the criminal statutes of limitation where you are.
-                    </p>
-                    <h2 className="text-2xl font-bold mb-2">What are some common concerns about reporting?</h2>
-                    <p className="mb-4">
-                        If you have questions or concerns about reporting, you're not alone. The list below may have answers to some common questions that are on your mind.
-                    </p>
-                    <ul className="list-disc list-inside mb-4">
-                        <li className="mb-2"><strong>The perpetrator got scared away or stopped before finishing the assault.</strong> Attempted rape is a serious crime and can be reported. Reports of attempted rape and other assault are taken seriously.</li>
-                        <li className="mb-2"><strong>I know the person who hurt me.</strong> About 2/3 of victims know the perpetrator. It can be unnerving to be violated by someone you know. Regardless of who the perpetrator is, sexual assault is against the law.</li>
-                        <li className="mb-2"><strong>I've been intimate with the perpetrator in the past, or am currently in a relationship with the perpetrator.</strong> Sexual assault can occur within a relationship. Giving someone consent in the past does not give them consent for any act in the future. If you did not consent, they acted against the law—and you can report it.</li>
-                        <li className="mb-2"><strong>I have no physical injuries, and I'm worried there's not enough proof.</strong> Most sexual assaults do not result in external physical injuries. It's important to receive medical attention to check for internal injuries. You can also choose to have a <a href="#" className="text-blue-600 underline">sexual assault forensic exam</a> to check for DNA evidence that may not be visible on the surface.</li>
-                        <li className="mb-2"><strong>I'm worried law enforcement won't believe me.</strong> There has been great investment in police training on this topic. While there are occasional exceptions, most law enforcement officers are understanding and on your side. If you do encounter someone who isn't taking your case seriously, ask for their supervisor and let your <a href="#" className="text-blue-600 underline">local sexual assault service provider</a> know.</li>
-                        <li className="mb-2"><strong>I don't want to get in trouble.</strong> Sometimes minors are afraid of being disciplined, either by the law or by their parents, because they were doing something they shouldn't have when the abuse occurred. For example, a teen might have been consuming alcohol, or a child might have been breaking a house rule. It's important to remember that sexual assault is a crime—no matter the circumstances. Nothing you did caused this to happen.</li>
-                    </ul>
-                    <h2 className="text-2xl font-bold mb-2">Do I have to report to get rape kit?</h2>
-                    <p className="mb-4">
-                        By law, you are not required to report to law enforcement in order to receive a <a href="#" className="text-blue-600 underline">sexual assault forensic exam</a>, commonly referred to as a "rape kit." The Violence Against Women Reauthorization Act of 2013 has made it easier for someone to have a "Jane Doe rape kit," where they are given a code to identify themselves if they choose to report later.
-                    </p>
-                </div>
-                <div className="max-w-7xl mx-auto p-4">
-                    <div className="bg-white p-6  ">
-                        <h1 className="text-2xl font-bold mb-4">Does it matter whether or not I know the perpetrator? Can I still have an exam?</h1>
-                        <p className="mb-4">There is value in having a sexual assault forensic exam performed, regardless of whether or not you know the identity of the perpetrator or perpetrators. DNA evidence collected during the exam can <a href="#" className="text-blue-600">play an important role</a> in the case against the perpetrator.</p>
-                        <h2 className="text-xl font-bold mb-4">Will I have to pay for the exam?</h2>
-                        <p className="mb-4">By law, you should not be billed for the direct costs of a sexual assault forensic exam. The way states handle this law can vary. Since 2009, states have been required to provide sexual assault forensic exams for free or via reimbursement, regardless of cooperation with law enforcement. Starting in 2015, health facilities will no longer be able to charge for exams up front and ask for victims to file reimbursement through their insurance later. If you have questions about a bill you received related to your exam or about any other aspects of the process, you can contact your <a href="#" className="text-blue-600">local sexual assault service provider</a> or state coalition.</p>
-                        <h2 className="text-xl font-bold mb-4">Legal Disclaimer</h2>
-                        <p className="text-sm">The Rape Abuse and Incest National Network (RAINN) website provides general information that is intended, but not guaranteed, to be correct and up-to-date. The information is not presented as a source of legal advice. You should not rely, for legal advice, on statements or representations made within the website or by any externally referenced Internet sites. If you need legal advice upon which you intend to rely in the course of your legal affairs, consult a competent, independent attorney. RAINN does not assume any responsibility for actions or non-actions taken by people who have visited this site, and no one shall be entitled to a claim for detrimental reliance on any information provided or expressed.</p>
-                    </div>
-                    <div className="mt-8">
-                        <h2 className="text-xl font-bold mb-4">Related Content</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="bg-white p-4 rounded-lg shadow-md">
-                                <h3 className="text-lg font-bold mb-2">The Importance of DNA in Sexual Assault Cases</h3>
-                                <p className="text-sm mb-2">Preserving DNA evidence is a key tool for law enforcement to investigate and prosecute crimes of sexual violence.</p>
-                                <a href="#" className="text-blue-600">READ MORE</a>
-                            </div>
-                            <div className="bg-white p-4 rounded-lg shadow-md">
-                                <h3 className="text-lg font-bold mb-2">What Is a Sexual Assault Forensic Exam?</h3>
-                                <p className="text-sm mb-2">During a sexual assault forensic exam, a trained healthcare professional can collect DNA evidence from your body, clothes, and other personal belongings.</p>
-                                <a href="#" className="text-blue-600">READ MORE</a>
-                            </div>
-                            <div className="bg-white p-4 rounded-lg shadow-md">
-                                <h3 className="text-lg font-bold mb-2">Community Support and Law Enforcement</h3>
-                                <p className="text-sm mb-2">You may only interact with law enforcement briefly, but they might ask you to provide a statement about the length of time.</p>
-                                <a href="#" className="text-blue-600">READ MORE</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="mt-8 bg-blue-100 p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center justify-between">
-                        <div className="text-center md:text-left mb-4 md:mb-0">
-                            <p className="text-lg font-bold mb-2">“The real healing was achieved when I started to sincerely believe I’m not responsible for what happened to me.”</p>
-                            <p className="text-sm">KEITH, SURVIVOR</p>
-                        </div>
-                        <div className="text-center">
-                            <p className="text-lg font-bold mb-2">Search for support in your local community from more than 1,000 local sexual assault service providers.</p>
-                            <button className="bg-blue-600 text-white px-4 py-2 rounded">Search All Providers</button>
-                        </div>
-                        <div className="text-center md:text-right">
-                            <p className="text-lg font-bold mb-2">91% of survivors of sexual violence</p>
-                            <button className="bg-green-600 text-white px-4 py-2 rounded">Donate Now</button>
-                        </div>
-                    </div>
-                </div>
+  </div>
 </section>
 
+
+            <section>
+
+                <div className="container mx-auto p-4">
+                    <div className="flex flex-col items-center space-y-4 mb-4">
+    {/* Dropdown Section */}
+    <div className="flex space-x-8">
+        <div>
+            <label htmlFor="service" className="block text-sm font-medium text-gray-700">What</label>
+            <select
+                id="service"
+                name="service"
+                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            >
+                <option>Hair stylist</option>
+            </select>
+        </div>
+        <div>
+            <label htmlFor="location" className="block text-sm font-medium text-gray-700">Where</label>
+            <select
+                id="location"
+                name="location"
+                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            >
+                <option>Nigeria</option>
+            </select>
+        </div>
+    </div>
+
+</div>
+<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+    <div className="mb-4">
+        <a href="hairdresser.html">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Rectangle 45191.png" alt="Hair stylist working on a client's hair" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Hair stylist</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Rectangle 45190.png" alt="Barber cutting a child's hair" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Barber</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Rectangle 45193.png" alt="Fashion designer working on a dress" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Fashion Designer</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Rectangle 45194.png" alt="Plumber fixing a sink" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Plumber</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Electrical.jpeg" alt="Plumber fixing a sink" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Electrician</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Mechanic.png" alt="Plumber fixing a sink" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Mechanic</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/web.jpg" alt="Plumber fixing a sink" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Web Development</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Videography.png" alt="Plumber fixing a sink" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Videography</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Legal Services.jpg" alt="Plumber fixing a sink" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Legal Services</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/CCTV Technician.jpg" alt="Plumber fixing a sink" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">CCTV Technician</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Interior Design.jpg" alt="Plumber fixing a sink" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Interior Design</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div className="mb-4">
+        <a href="">
+        <div className="border rounded-lg shadow-lg overflow-hidden">
+            <img src="images/Cleaning Services.jpg" alt="Plumber fixing a sink" className="w-full h-48 object-cover" />
+            <div className="p-4">
+                <h2 className="text-xl font-bold">Cleaning Services</h2>
+                <p>Lagos</p>
+                <p>From #500</p>
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+
+
+                </div>
+                </section>
 
             <div className="text-center py-8 container p-8">
                         <h2 className="text-xl font-bold">You are 90% MORE likely to get the best flight deals by subscribing</h2>

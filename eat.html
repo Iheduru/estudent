@@ -145,10 +145,10 @@ const App = () => {
                             className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
                             style={{ top: '100%', left: 0 }}
                         >
-                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="services.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
                             <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
                             <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
-                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="hairdresser.html" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
                             <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
                             <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
                             <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
@@ -199,8 +199,8 @@ const App = () => {
         
             <section>
                 <div className="container mx-auto p-4">
-                    <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8">
-                        <img src="https://placehold.co/600x400" alt="Interior of a fancy restaurant with neatly arranged tables and chairs" className="w-full lg:w-1/2 rounded-lg shadow-lg mb-4 lg:mb-0" />
+                    <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-8 my-16">
+                        <img src="images/Rectangle 101.png" alt="Interior of a fancy restaurant with neatly arranged tables and chairs" className="w-full lg:w-1/2 rounded-lg shadow-lg mb-4 lg:mb-0" />
                         <div className="lg:w-1/2">
                             <h1 className="text-2xl font-bold text-blue-900 mb-2">Chicken and Chips fancy restaurant</h1>
                             <p className="text-gray-600 mb-2"><i className="fas fa-map-marker-alt"></i> 24 yalla street off Shoprite, Alausa Ikeja, Lagos state, Nigeria</p>
@@ -218,60 +218,79 @@ const App = () => {
                                 <span className="bg-gray-200 text-gray-600 px-2 py-1 rounded-full">Tags</span>
                                 <span className="bg-gray-200 text-gray-600 px-2 py-1 rounded-full">Tags</span>
                             </div>
-                            <img src="https://placehold.co/600x200" alt="Map showing the location of the restaurant" className="w-full rounded-lg shadow-lg mb-4" />
-                            <button className="bg-blue-900 text-white px-4 py-2 rounded-full">VISIT</button>
+                            <img src="images/Rectangle 4625.png" alt="Map showing the location of the restaurant" className="w-full rounded-lg shadow-lg mb-4" />
+                            <button className="bg-blue-900 text-white px-4 py-2 rounded-full"><a href="https://www.google.com/maps?q=24+Awolowo+Street,+Ilorin"> VISIT</a></button>
                         </div>
                     </div>
-                    <div className="mt-8 flex items-center justify-center">
+                    <div className="my-12 flex items-center justify-center">
                         <input type="text" placeholder="Input your location" className="border border-gray-300 rounded-full px-4 py-2 w-full max-w-lg" />
                         <button className="bg-blue-900 text-white px-4 py-2 rounded-full ml-2">Map out</button>
                     </div>
-                    <h2 className="text-2xl font-bold text-center text-gray-800 mt-8">Restaurants around you</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
-                        {Array(8).fill().map((_, index) => (
-                            <div key={index} className="border border-gray-300 rounded-lg shadow-lg p-4">
-                                <img src="https://placehold.co/300x200" alt="Restaurant thumbnail" className="w-full rounded-lg mb-4" />
-                                <h3 className="text-lg font-bold text-gray-800 mb-2">Chicken and Chips fancy restaurant</h3>
-                                <p className="text-gray-600 mb-2"><i className="fas fa-map-marker-alt"></i> 24 yalla street off Shoprite, Alausa Ikeja, Lagos state, Nigeria</p>
-                                <div className="flex items-center">
-                                    <span className="text-yellow-500"><i className="fas fa-star"></i> <i className="fas fa-star"></i> <i className="fas fa-star"></i> <i className="fas fa-star"></i> <i className="fas fa-star-half-alt"></i></span>
-                                    <span className="ml-2 text-gray-600">4.34</span>
-                                </div>
-                            </div>
-                        ))}
+                    <h2 className="text-2xl font-bold text-center text-gray-800 my-8">Restaurants around you</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-12">
+        {[
+            "images/Rectangle 45799.png",
+            "images/Rectangle 457127.png",
+            "images/Rectangle 45749.png",
+            "images/Rectangle 45177.png",
+            "images/Rectangle 45799.png",
+            "images/Rectangle 45177.png",
+            "images/Rectangle 45749.png",
+            "images/Rectangle 457127.png",
+            ].map((imageSrc, index) => (
+            <div key={index} className="border rounded-lg shadow-md overflow-hidden">
+                <img src={imageSrc} alt={`Highly Recommended Item ${index + 1}`} className="w-full h-40 object-cover"/>
+                <div className="p-4">
+                    <h3 className="text-lg font-bold text-gray-800 mb-2">Chicken and Chips fancy restaurant</h3>
+                    <p className="text-gray-600 mb-2"><i className="fas fa-map-marker-alt"></i> 24 yalla street off Shoprite, Alausa Ikeja, Lagos state, Nigeria</p>
+                    <div className="flex items-center mt-2">
+                        <i className="fas fa-star text-yellow-500"></i>
+                        <i className="fas fa-star text-yellow-500"></i>
+                        <i className="fas fa-star text-yellow-500"></i>
+                        <i className="fas fa-star text-yellow-500"></i>
+                        <i className="fas fa-star-half-alt text-yellow-500"></i>
+                        <span className="ml-2 text-gray-600">4.5</span>
                     </div>
+                </div>
+            </div>
+        ))}
+    </div>
                 </div>
 
                 <div className="container mx-auto p-4">
-                    <div className="relative">
-                        <img src="https://placehold.co/1200x400" alt="Restaurant interior" className="w-full h-64 object-cover" />
+                    <div className="relative my-18">
+                        <img src="images/image 3.png" alt="Restaurant interior" className="w-full h-90 object-cover" />
                         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-start p-8">
                             <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Enjoy the best dish in a very serene environment and with just little money</h1>
                             <button className="bg-blue-700 text-white px-4 py-2 rounded">Apply</button>
                         </div>
                     </div>
-                    <h2 className="text-center text-xl font-semibold my-8">THIS PLACES RECEIVED THE BEST REVIEWS THIS WEEK</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        {Array(5).fill().map((_, index) => (
-                            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                                <img src="https://placehold.co/300x200" alt="Restaurant exterior" className="w-full h-40 object-cover" />
-                                <div className="p-4">
-                                    <h3 className="text-lg font-semibold">Chicken and Chips fancy restaurant</h3>
-                                    <p className="text-gray-600 text-sm"><i className="fas fa-map-marker-alt"></i> 24 High street off Shonibare, Ikeja</p>
-                                    <div className="flex items-center mt-2">
-                                        <div className="flex text-yellow-500">
-                                            <i className="fas fa-star"></i>
-                                            <i className="fas fa-star"></i>
-                                            <i className="fas fa-star"></i>
-                                            <i className="fas fa-star"></i>
-                                            <i className="fas fa-star-half-alt"></i>
-                                        </div>
-                                        <span className="ml-2 text-gray-600">4.34</span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                    <h2 className="text-center text-xl font-semibold my-12">THIS PLACES RECEIVED THE BEST REVIEWS THIS WEEK</h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {[
+            "images/Rectangle 45799.png",
+            "images/Rectangle 457127.png",
+            "images/Rectangle 45749.png",
+            "images/Rectangle 45177.png",
+            "images/Rectangle 45799.png"
+                ].map((imageSrc, index) => (
+            <div key={index} className="border rounded-lg shadow-md overflow-hidden">
+                <img src={imageSrc} alt={`Highly Recommended Item ${index + 1}`} className="w-full h-40 object-cover"/>
+                <div className="p-4">
+                    <h3 className="text-lg font-semibold">Chicken and Chips fancy restaurant</h3>
+                    <p className="text-gray-600 text-sm"><i className="fas fa-map-marker-alt"></i> 24 High street off Shonibare, Ikeja</p>
+                    <div className="flex items-center mt-2">
+                        <i className="fas fa-star text-yellow-500"></i>
+                        <i className="fas fa-star text-yellow-500"></i>
+                        <i className="fas fa-star text-yellow-500"></i>
+                        <i className="fas fa-star text-yellow-500"></i>
+                        <i className="fas fa-star-half-alt text-yellow-500"></i>
+                        <span className="ml-2 text-gray-600">4.5</span>
                     </div>
+                </div>
+            </div>
+        ))}
+    </div>
                 </div>
                 </section>
 
@@ -310,39 +329,44 @@ const App = () => {
                             <h1 className="text-4xl font-bold mb-2">Logo</h1>
                             <p>Book tickets & track your coach anytime, anywhere.</p>
                         </div>
-                        <div className="flex space-x-16">
-                            <div>
-                                <h2 className="font-bold mb-2">Quick Links</h2>
-                                <ul className="space-y-1">
-                                    <li>• Corporate Info</li>
-                                    <li>• Accessibility</li>
-                                    <li>• Jobs</li>
-                                    <li>• Ad Choices</li>
-                                    <li>• Privacy Policy</li>
-                                    <li>• CA Notice</li>
-                                    <li>• Terms of Service - NEW</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• NBC App</li>
-                                    <li>• Peacock</li>
-                                    <li>• Advertise</li>
-                                    <li>• Closed Captioning</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• Advertise</li>
-                                    <li>• Link TV Provider</li>
-                                    <li>• FAQ</li>
-                                    <li>• Casting</li>
-                                    <li>• Contact Us</li>
-                                    <li>• Local Schedule</li>
-                                    <li>• Tickets and NBC Studio Tour</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {/* Column 1 */}
+  <div>
+    <h2 className="font-bold mb-2">Quick Links</h2>
+    <ul className="space-y-1">
+      <li>• Corporate Info</li>
+      <li>• Accessibility</li>
+      <li>• Jobs</li>
+      <li>• Ad Choices</li>
+      <li>• Privacy Policy</li>
+      <li>• CA Notice</li>
+      <li>• Terms of Service - NEW</li>
+    </ul>
+  </div>
+
+  {/* Column 2 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• NBC App</li>
+      <li>• Peacock</li>
+      <li>• Advertise</li>
+      <li>• Closed Captioning</li>
+    </ul>
+  </div>
+
+  {/* Column 3 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• Advertise</li>
+      <li>• Link TV Provider</li>
+      <li>• FAQ</li>
+      <li>• Casting</li>
+      <li>• Contact Us</li>
+      <li>• Local Schedule</li>
+      <li>• Tickets and NBC Studio Tour</li>
+    </ul>
+  </div>
+</div>
                     </div>
                 </div>
                     </footer>
@@ -351,7 +375,10 @@ const App = () => {
             );
         };
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        // React 18 Rendering
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
     </script>
 </body>
 </html>

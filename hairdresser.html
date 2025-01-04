@@ -1,14 +1,13 @@
 <html>
 <head>
-    <title>Student Financial Assistance</title>
+    <title>Ride Booking</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">   <style>
         body {
             font-family: 'Roboto', sans-serif;
         }
@@ -75,17 +74,6 @@ const App = () => {
         setMobileMenuOpen((prev) => !prev);
     };
 
-    const items = [
-                { img: "images/Rectangle 420.png", label: "Get a comfy hiring", logo: "Europcar" },
-                { img: "images/Rectangle 421.png", label: "Sports travel" },
-                { img: "images/Rectangle 422.png", label: "School coach hire", logo: "Hertz" },
-                { img: "images/Rectangle 423.png", label: "Business travel solutions", logo: "AVIS" },
-                { img: "images/Rectangle 420.png", label: "Our fleet", logo: "Europcar" },
-                { img: "images/Rectangle 421.png", label: "School coach hire", logo: "Hertz" },
-                { img: "images/Rectangle 422.png", label: "Business travel solutions", logo: "AVIS" },
-                { img: "images/Rectangle 423.png", label: "Events & occasions" }
-            ];
-
     return (
         <div>
             <header className="flex justify-between items-center p-4 bg-white relative" style={{ zIndex: 40 }}>
@@ -103,7 +91,7 @@ const App = () => {
                     <div className="relative">
                         <a
                             href="#"
-                            className="text-white font-bold border rounded bg-blue-900 px-3"
+                            className="text-gray-600 hover:text-gray-900"
                             onClick={toggleRideDropdown}
                         >
                             Ride <i className={`fas fa-caret-${isRideOpen ? "up" : "down"} ml-1`} id="down"></i>
@@ -115,7 +103,7 @@ const App = () => {
                             <div className="flex flex-col space-y-2 px-2">
                                 <a href="ride.html" className="block text-black hover:bg-gray-200 p-2">All</a>
                                 <a href="bus.html" className="block text-black hover:bg-gray-200 p-2">Bus</a>
-                                <a href="cars.html" className="block text-black hover:bg-gray-200 p-2">Car</a>
+                                <a href="cars.html" className="block text-black hover:bg-gray-200 px-4 py-2">Car</a>
                                 <a href="plane.html" className="block text-black hover:bg-gray-200 p-2">Plane</a>
                             </div>
                         </div>
@@ -147,7 +135,7 @@ const App = () => {
                     {/* Services Dropdown */}
                     <div className="relative">
                         <button
-                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            className="text-white font-bold border rounded bg-blue-900 px-3"
                             onClick={toggleServicesDropdown}
                         >
                             Services <i className={`fas fa-caret-${isServicesOpen ? "up" : "down"} ml-1`}></i>
@@ -159,7 +147,7 @@ const App = () => {
                             <a href="services.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
                             <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
                             <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
-                            <a href="hairdresser.html" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="hairdresser.html" className="block text-white font-bold border rounded bg-blue-900 px-3">Hair Dresser</a>
                             <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
                             <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
                             <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
@@ -207,80 +195,228 @@ const App = () => {
                     <i className="fa fa-bars"></i>
                 </button>
             </header>
-            <div>
-                <div className="font-sans">
-                    <div className="relative">
-                        <img src="images/Rectangle 392.png" alt="People boarding a bus" className="w-full h-96 object-cover" />
-                        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
-                            <h1 className="text-4xl font-bold">Book a Ride here today and Transit in style</h1>
-                            <p className="mt-2">Cho what do you want to do ride in?</p>
-                            <div className="mt-4 flex space-x-4">
-                                <button className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded"><a href="cars.html">Car</a></button>
-                                <button className="px-4 py-2 bg-blue-900 hover:bg-blue-700 text-white rounded"><a href="bus.html">Bus</a></button>
-                            </div>
-                            <div className="absolute top-10 right-10">
-                                <div className="bg-red-600 text-white text-center rounded-full w-32 h-32 flex items-center justify-center">
-                                    <span className="text-xl font-bold">student <br /> discount</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="py-12 bg-white">
-                        <h2 className="text-center text-2xl font-bold mb-8">3 steps to book a Ride</h2>
-                        <div className="flex justify-center space-x-8">
-                            <div className="text-center">
-                                <h3 className="text-xl font-semibold">Step 1</h3>
-                                <p className="mt-2">Enter your pick-up point, date and time, select your car.</p>
-                            </div>
-                            <div className="text-center">
-                                <h3 className="text-xl font-semibold">Step 2</h3>
-                                <p className="mt-2">Verify the booking details and select your preferred payment method.</p>
-                            </div>
-                            <div className="text-center">
-                                <h3 className="text-xl font-semibold">Step 3</h3>
-                                <p className="mt-2">Your driver will pick you up at the given location and time.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="py-12 ">
-                        <div className="max-w-7xl mx-auto px-4">
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                <div className="md:col-span-2">
-                                    <h2 className="text-xl font-bold mb-4">Hiring a coach for your group</h2>
-                                    <p className="mb-4">If you are travelling with a group of 16 or more people and are looking for sustainable cost-effective travel, look no further. When hiring a coach and a driver, you have complete control over your travel itinerary, making changes and stops as you wish, ensuring a tailor-made journey for everyone on board.</p>
-                                    <p>With over 90 years of experience providing coach travel across the UK and Europe and access to an unrivaled fleet of vehicles, National Express Transport Solutions can provide a service to suit your requirements, big or small.</p>
-                                </div>
-                                <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-                                    <h2 className="text-xl font-bold mb-4">Our Ride for National Expression and Solution</h2>
-                                    <p>Vestibulum dictum ultrices elit a luctus. Sed in ante ut leo congue posuere at sit amet ligula. Pellentesque eget augue nec nisl sodales blandit sed et sem.</p>
-                                </div>
-                            </div>
-                            <div className="mt-12">
-                                <h2 className="text-xl font-bold mb-4">Business travel solutions</h2>
-                                <p>Are you a business looking for ground transport management solutions? The strength of the National Express group combined with the UK's largest network of audited partner operators provides industry-leading transport management solutions from planning through to delivery. To find out more head over to the Transport Solutions website or talk to one of our team today by emailing bd@nationalexpress.com to request a call back.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+            <section>
                 <div className="container mx-auto p-4">
-                    <h1 className="text-xl font-bold mb-4">Book for Different Purposes</h1>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {items.map((item, index) => (
-                            <div key={index} className="relative">
-                                <img src={item.img} alt={item.label} className="w-full h-auto" />
-                                {item.logo && (
-                                    <div className="absolute top-2 left-2 bg-white p-1">
-                                        <span className="text-sm font-bold">{item.logo}</span>
+                    <div className="flex flex-col items-center space-y-4 mb-4">
+    {/* Dropdown Section */}
+    <div className="flex space-x-8">
+        <div>
+            <label htmlFor="service" className="block text-sm font-medium text-gray-700">What</label>
+            <select
+                id="service"
+                name="service"
+                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            >
+                <option>Hair stylist</option>
+            </select>
+        </div>
+        <div>
+            <label htmlFor="location" className="block text-sm font-medium text-gray-700">Where</label>
+            <select
+                id="location"
+                name="location"
+                className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            >
+                <option>Nigeria</option>
+            </select>
+        </div>
+    </div>
+
+    {/* Buttons Section */}
+    <div className="flex space-x-8">
+        <button className="border-b-2 border-black">Services</button>
+        <button>Recent search</button>
+    </div>
+</div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="col-span-1">
+                            <div className="mb-4">
+                                <div className="border rounded-lg overflow-hidden">
+                                    <img src="images/Rectangle 45191.png" alt="Hair stylist working on a client's hair" className="w-full h-48 object-cover"/>
+                                    <div className="p-4">
+                                        <h2 className="text-xl font-bold">Hair stylist</h2>
+                                        <p>Lagos</p>
+                                        <p>From #500</p>
                                     </div>
-                                )}
-                                <div className="absolute bottom-2 left-2 text-white text-lg font-bold">
-                                    {item.label}
                                 </div>
                             </div>
-                        ))}
+                            <div className="mb-4">
+                                <div className="border rounded-lg overflow-hidden">
+                                    <img src="images/Rectangle 45190.png" alt="Barber cutting a child's hair" className="w-full h-48 object-cover"/>
+                                    <div className="p-4">
+                                        <h2 className="text-xl font-bold">Barber</h2>
+                                        <p>Lagos</p>
+                                        <p>From #500</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="mb-4">
+                                <div className="border rounded-lg overflow-hidden">
+                                    <img src="images/Rectangle 45193.png" alt="Fashion designer working on a dress" className="w-full h-48 object-cover"/>
+                                    <div className="p-4">
+                                        <h2 className="text-xl font-bold">Fashion Designer</h2>
+                                        <p>Lagos</p>
+                                        <p>From #500</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="mb-4">
+                                <div className="border rounded-lg overflow-hidden">
+                                    <img src="images/Rectangle 45194.png" alt="Plumber fixing a sink" className="w-full h-48 object-cover"/>
+                                    <div className="p-4">
+                                        <h2 className="text-xl font-bold">Plumber</h2>
+                                        <p>Lagos</p>
+                                        <p>From #500</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-span-2">
+                <div className="border rounded-lg overflow-hidden mb-4">
+                    <div className="relative">
+                        <img src="images/Rectangle 45191.png" alt="Hair stylist working on a client's hair" className="w-full h-60 object-cover"/>
+                        <img src="images/Ellipse 208.png" alt="Profile picture of James John" className="absolute -bottom-6 left-4 w-12 h-12 rounded-full border-2 border-white"/>
+                    </div>
+                    <div className="p-6">
+                        <h2 className="text-2xl font-bold mb-2">Hair stylist</h2>
+                        <p className="text-gray-700">James John</p>
+                        <p className="text-gray-700">Lagos</p>
+                        <p className="text-gray-700">From #500</p>
+                        <div className="flex items-center mt-4">
+                            <div className="flex items-center text-yellow-500">
+                                <i className="fas fa-star"></i>
+                                <i className="fas fa-star"></i>
+                                <i className="fas fa-star"></i>
+                                <i className="fas fa-star-half-alt"></i>
+                                <i className="far fa-star"></i>
+                            </div>
+                            <span className="ml-2 text-gray-600">4.34</span>
+                        </div>
+                        <div className="mt-4 flex justify-end">
+                        <button className="mt-4 w-1/5 bg-blue-600 text-white py-2 rounded-lg">Request</button>
+                        </div>
+                        </div>
+                </div>
+                            <div className="mb-4">
+                                <h3 className="text-lg font-bold mb-2">Images</h3>
+                                <div className="grid grid-cols-3 gap-2">
+                                    <img src="images/Rectangle 4124.png" alt="Braided hairstyle" className="w-full h-40 mt-7 object-cover rounded"/>
+                                    <img src="images/Rectangle 4520.png" alt="Braided hairstyle" className="w-full h-50 object-cover rounded"/>
+                                    <img src="images/Rectangle 4521.png" alt="Braided hairstyle" className="w-full h-40 mt-7 object-cover rounded"/>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold mb-2">Reviews</h3>
+                                <div className="space-y-4">
+                                    <div className="flex items-start space-x-4 p-4 border rounded-lg shadow-sm">
+                        <img src="images/Ellipse 208.png" alt="Profile picture of the commenter" className="w-12 h-12 rounded-full" />
+                        <div className="flex-1">
+                            <div className="flex justify-between items-center">
+                                <h4 className="font-semibold">Micheal Ose</h4>
+                                <div className="flex items-center space-x-1">
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star-half-alt"></i></span>
+                                    <span className="text-gray-600 text-sm">4.34</span>
+                                </div>
+                            </div>
+                            <p className="text-gray-700 mt-2">
+                                Lorem ipsum dolor sit amet consectetur. Congue est faucibus nec congue mi vel curabitur et. Duis arcu at in ut mauris nam tellus ultrices. Sagittis cras mauris mauris in cursus euismod. Quam non habitant pellentesque etiam.
+                            </p>
+                            <p className="text-gray-700 mt-2">
+                                wow that's really nice, amazing... keep enjoying yourself 😂🥰💞🖤💖🌹
+                            </p>
+                        </div>
+                    </div>
+                                    <div className="flex items-start space-x-4 p-4 border rounded-lg shadow-sm">
+                        <img src="images/Ellipse 208.png" alt="Profile picture of the commenter" className="w-12 h-12 rounded-full" />
+                        <div className="flex-1">
+                            <div className="flex justify-between items-center">
+                                <h4 className="font-semibold">Micheal Ose</h4>
+                                <div className="flex items-center space-x-1">
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star-half-alt"></i></span>
+                                    <span className="text-gray-600 text-sm">4.34</span>
+                                </div>
+                            </div>
+                            <p className="text-gray-700 mt-2">
+                                Lorem ipsum dolor sit amet consectetur. Congue est faucibus nec congue mi vel curabitur et. Duis arcu at in ut mauris nam tellus ultrices. Sagittis cras mauris mauris in cursus euismod. Quam non habitant pellentesque etiam.
+                            </p>
+                            <p className="text-gray-700 mt-2">
+                                wow that's really nice, amazing... keep enjoying yourself 😂🥰💞🖤💖🌹
+                            </p>
+                        </div>
+                    </div>
+                                    <div className="flex items-start space-x-4 p-4 border rounded-lg shadow-sm">
+                        <img src="images/Ellipse 208.png" alt="Profile picture of the commenter" className="w-12 h-12 rounded-full" />
+                        <div className="flex-1">
+                            <div className="flex justify-between items-center">
+                                <h4 className="font-semibold">Micheal Ose</h4>
+                                <div className="flex items-center space-x-1">
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star-half-alt"></i></span>
+                                    <span className="text-gray-600 text-sm">4.34</span>
+                                </div>
+                            </div>
+                            <p className="text-gray-700 mt-2">
+                                Lorem ipsum dolor sit amet consectetur. Congue est faucibus nec congue mi vel curabitur et. Duis arcu at in ut mauris nam tellus ultrices. Sagittis cras mauris mauris in cursus euismod. Quam non habitant pellentesque etiam.
+                            </p>
+                            <p className="text-gray-700 mt-2">
+                                wow that's really nice, amazing... keep enjoying yourself 😂🥰💞🖤💖🌹
+                            </p>
+                        </div>
+                    </div>
+                                    <div className="space-y-8">
+                    <div className="flex items-start space-x-4 p-4 border rounded-lg shadow-sm">
+                        <img src="images/Ellipse 208.png" alt="Profile picture of the commenter" className="w-12 h-12 rounded-full" />
+                        <div className="flex-1">
+                            <div className="flex justify-between items-center">
+                                <h4 className="font-semibold">Micheal Ose</h4>
+                                <div className="flex items-center space-x-1">
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                                    <span className="text-yellow-500"><i className="fas fa-star-half-alt"></i></span>
+                                    <span className="text-gray-600 text-sm">4.34</span>
+                                </div>
+                            </div>
+                            <p className="text-gray-700 mt-2">
+                                Lorem ipsum dolor sit amet consectetur. Congue est faucibus nec congue mi vel curabitur et. Duis arcu at in ut mauris nam tellus ultrices. Sagittis cras mauris mauris in cursus euismod. Quam non habitant pellentesque etiam.
+                            </p>
+                            <p className="text-gray-700 mt-2">
+                                wow that's really nice, amazing... keep enjoying yourself 😂🥰💞🖤💖🌹
+                            </p>
+                        </div>
+                    </div>
+                    <div className="p-4 border rounded-lg shadow-sm">
+                        <h4 className="font-semibold text-lg">Drop your Comment</h4>
+                        <div className="mt-4">
+                            <input type="text" placeholder="write something" className="w-full border-b-2 border-gray-300 focus:outline-none focus:border-gray-500 pb-1" />
+                        </div>
+                        <div className="mt-4 flex justify-end">
+                            <button className="bg-blue-900 text-white px-4 py-2 rounded-lg">Send</button>
+                        </div>
                     </div>
                 </div>
-            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+
             <div className="text-center py-8 container p-8">
                         <h2 className="text-xl font-bold">You are 90% MORE likely to get the best flight deals by subscribing</h2>
                         <p className="mt-4">Enter your email and we'll send them your way.</p>
@@ -354,13 +490,8 @@ const App = () => {
 </div>
                     </div>
                 </div>
-                
                     </footer>
                 </div>
-                </div>
-                
-
-                
             );
         };
 

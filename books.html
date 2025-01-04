@@ -24,6 +24,22 @@ const App = () => {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isOthersOpen, setIsOthersOpen] = useState(false); // Added state for Others dropdown
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const categories = [
+        'All', 'State', 'University', 'Poly', 'College', 'Secondary', 'Primary',
+        'Course', 'Science', 'Price', 'Commerce', 'Fiction', 'Business',
+        'Music', 'Engineering', 'Agric', 'Art', 'PhD', 'Masters', 'Bachelors',
+        'Diploma', 'Abroad', 'Date'
+    ];
+
+    const [selectedCategories, setSelectedCategories] = useState([]);
+
+    const toggleCategory = (category) => {
+        setSelectedCategories((prevSelected) =>
+            prevSelected.includes(category)
+                ? prevSelected.filter((item) => item !== category) // Remove if already selected
+                : [...prevSelected, category] // Add if not selected
+        );
+    };
 
     useEffect(() => {
         window.addEventListener("resize", checkScreenSize);
@@ -73,6 +89,7 @@ const App = () => {
     const toggleMobileMenu = () => {
         setMobileMenuOpen((prev) => !prev);
     };
+    
 
     return (
         <div>
@@ -144,10 +161,10 @@ const App = () => {
                             className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
                             style={{ top: '100%', left: 0 }}
                         >
-                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="services.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
                             <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
                             <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
-                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="hairdresser.html" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
                             <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
                             <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
                             <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
@@ -213,34 +230,166 @@ const App = () => {
   <button className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full  transform transition-transform duration-200 hover:scale-105"><a href="uploadbook.html">Upload a Book</a></button>
 </div>
 
-                    <button className="flex flex-wrap gap-2 my-4 ">
-                        {['All', 'State', 'University', 'Poly', 'College', 'Secondary', 'Primary', 'Course', 'Science', 'Price', 'Commerce', 'Fiction', 'Business', 'Music', 'Engineering', 'Agric', 'Art', 'PhD', 'Masters', 'Bachelors', 'Diploma', 'Abroad', 'Date'].map((category) => (
-                            <span key={category} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full  transform transition-transform duration-200 hover:scale-105">{category}</span>
-                        ))}
-                    </button>
-                    <div className="flex space-x-4 mb-4">
+<div className="container mx-auto p-4">
+            <button className="flex flex-wrap gap-2 my-4">
+                {categories.map((category) => (
+                    <span
+                        key={category}
+                        onClick={() => toggleCategory(category)}
+                        className={`px-4 py-2 rounded-full cursor-pointer transform transition-transform duration-200 hover:scale-105 
+                            ${selectedCategories.includes(category) 
+                                ? 'bg-blue-500 text-white' // Selected category style
+                                : 'bg-gray-200 text-gray-700' // Unselected category style
+                            }`}
+                    >
+                        {category}
+                    </span>
+                ))}
+            </button>
+            <div className="mt-4">
+                <h3 className="text-xl font-bold">Selected Categories:</h3>
+                <p>{selectedCategories.length > 0 ? selectedCategories.join(', ') : 'None'}</p>
+            </div>
+        </div>
+                    <div className="flex space-x-4 mb-4 my-10">
                         <span className="text-blue-900 font-bold"><a href="#">Books</a></span>
                         <span className="text-gray-500"><a href="bookshop.html">Bookshops</a></span>
                     </div>
+                    </div>
                     <div className="relative mb-8">
-                        <img src="https://placehold.co/1200x400" alt="Book Release Event Banner" className="w-full rounded-lg" />
+                        <img src="images/div.fill1.png" alt="Book Release Event Banner" className="w-full rounded-lg" />
                         <div className="absolute top-0 left-0 p-4">
                             <span className="bg-red-600 text-white px-2 py-1 rounded">Advertisement</span>
                         </div>
                     </div>
-                    <h2 className="text-2xl font-bold mb-4">NEW ARRIVALS</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        {Array(12).fill().map((_, index) => (
-                            <div key={index} className="bg-white p-4 rounded-lg shadow">
-                                <img src="https://placehold.co/200x300" alt="Book Cover" className="w-full h-48 object-cover mb-4 rounded" />
-                                <h3 className="text-lg font-bold mb-2">Book Title</h3>
-                                <p className="text-gray-500 mb-2">Author Name</p>
-                                <p className="text-gray-700 font-bold mb-2">₦15,500.00</p>
-                                <button className="bg-blue-900 text-white px-4 py-2 rounded-full w-full">ADD TO CART</button>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                    <section className="mb-8 container mx-auto p-4">
+                        <h2 className="text-2xl font-bold mb-4">NEW ARRIVALS</h2>
+                        <div className="py-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+                            {[
+                                {
+                                    discount: "13%",
+                                    title: "Science Workbook",
+                                    description: "Weight in CIBS with Zero Clucks to Give",
+                                    price: "₦6,000.00",
+                                    oldPrice: "₦7,000.00",
+                                    imgSrc: "images/Link 1.png",
+                                    alt: "Science Workbook cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Fundamentals of Software Engineering",
+                                    description: "Social Warming: The Dangerous and Polarizing Effects of Social Media",
+                                    price: "₦5,000.00",
+                                    oldPrice: "₦6,000.00",
+                                    imgSrc: "images/Link 2.png",
+                                    alt: "Fundamentals of Software Engineering cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Fundamentals of Software Engineering",
+                                    description: "St Paul The Misunderstood Apostle",
+                                    price: "₦5,000.00",
+                                    oldPrice: "₦6,000.00",
+                                    imgSrc: "images/Link 3.png",
+                                    alt: "Fundamentals of Software Engineering cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Software Engineering",
+                                    description: "The Book of Memory",
+                                    price: "₦5,000.00",
+                                    oldPrice: "₦6,000.00",
+                                    imgSrc: "images/Link 1.png",
+                                    alt: "Software Engineering cover"
+                                },
+                                {
+                                    discount: "13%",
+                                    title: "Science",
+                                    description: "The Crowd",
+                                    price: "₦6,000.00",
+                                    oldPrice: "₦7,000.00",
+                                    imgSrc: "images/Link 4.png",
+                                    alt: "Science cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Science Workbook",
+                                    description: "The Dust Never Settles",
+                                    price: "₦6,000.00",
+                                    oldPrice: "₦7,000.00",
+                                    imgSrc: "images/Link 5.png",
+                                    alt: "Science Workbook cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Science Workbook",
+                                    description: "The Dust Never Settles",
+                                    price: "₦6,000.00",
+                                    oldPrice: "₦7,000.00",
+                                    imgSrc: "images/Link 2.png",
+                                    alt: "Science Workbook cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Science Workbook",
+                                    description: "The Dust Never Settles",
+                                    price: "₦6,000.00",
+                                    oldPrice: "₦7,000.00",
+                                    imgSrc: "images/Link 1.png",
+                                    alt: "Science Workbook cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Science Workbook",
+                                    description: "The Dust Never Settles",
+                                    price: "₦6,000.00",
+                                    oldPrice: "₦7,000.00",
+                                    imgSrc: "images/Link 3.png",
+                                    alt: "Science Workbook cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Science Workbook",
+                                    description: "The Dust Never Settles",
+                                    price: "₦6,000.00",
+                                    oldPrice: "₦7,000.00",
+                                    imgSrc: "images/Link 2.png",
+                                    alt: "Science Workbook cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Science Workbook",
+                                    description: "The Dust Never Settles",
+                                    price: "₦6,000.00",
+                                    oldPrice: "₦7,000.00",
+                                    imgSrc: "images/Link 1.png",
+                                    alt: "Science Workbook cover"
+                                },
+                                {
+                                    discount: "20%",
+                                    title: "Science Workbook",
+                                    description: "The Dust Never Settles",
+                                    price: "₦6,000.00",
+                                    oldPrice: "₦7,000.00",
+                                    imgSrc: "images/Link 5.png",
+                                    alt: "Science Workbook cover"
+                                },
+                            ].map((book, index) => (
+                                <div key={index} className="border p-4">
+                                    <div className="relative">
+                                        <img src={book.imgSrc} alt={book.alt} className="w-full h-auto" />
+                                        <span className="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 text-xs">{book.discount}</span>
+                                    </div>
+                                    <h3 className="text-lg font-bold mt-2">{book.title}</h3>
+                                    <p className="text-sm">{book.description}</p>
+                                    <p className="text-red-500 font-bold">{book.price}</p>
+                                    <p className="line-through text-gray-500">{book.oldPrice}</p>
+                                    <button className="bg-blue-500 text-white px-4 py-2 mt-2">ADD TO CART</button>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                
                 <div className="container mx-auto p-4">
                     <section className="mb-8">
                         <h2 className="text-2xl font-bold mb-4">DEALS OF THE DAY</h2>
@@ -252,7 +401,7 @@ const App = () => {
                                     description: "Weight in CIBS with Zero Clucks to Give",
                                     price: "₦6,000.00",
                                     oldPrice: "₦7,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/Link 5.png",
                                     alt: "Science Workbook cover"
                                 },
                                 {
@@ -261,7 +410,7 @@ const App = () => {
                                     description: "Social Warming: The Dangerous and Polarizing Effects of Social Media",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/Link 2.png",
                                     alt: "Fundamentals of Software Engineering cover"
                                 },
                                 {
@@ -270,7 +419,7 @@ const App = () => {
                                     description: "St Paul The Misunderstood Apostle",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/Link 2.png",
                                     alt: "Fundamentals of Software Engineering cover"
                                 },
                                 {
@@ -279,7 +428,7 @@ const App = () => {
                                     description: "The Book of Memory",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/Link 3.png",
                                     alt: "Software Engineering cover"
                                 },
                                 {
@@ -288,7 +437,7 @@ const App = () => {
                                     description: "The Crowd",
                                     price: "₦6,000.00",
                                     oldPrice: "₦7,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/Link 4.png",
                                     alt: "Science cover"
                                 },
                                 {
@@ -297,7 +446,7 @@ const App = () => {
                                     description: "The Dust Never Settles",
                                     price: "₦6,000.00",
                                     oldPrice: "₦7,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/Link 5.png",
                                     alt: "Science Workbook cover"
                                 }
                             ].map((book, index) => (
@@ -315,12 +464,13 @@ const App = () => {
                             ))}
                         </div>
                     </section>
+                  
 
                     <section className="mb-8">
                         <h2 className="text-2xl font-bold mb-4">AVAILABLE ON PRE-ORDER</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
                             <div className="border p-4">
-                                <img src="https://placehold.co/200x300" alt="NCERT cover" className="w-full h-auto" />
+                                <img src="images/Link 6.png" alt="NCERT cover" className="w-full h-auto" />
                                 <h3 className="text-lg font-bold mt-2">NCERT</h3>
                                 <p className="text-sm">Development in Attitude</p>
                                 <p className="text-red-500 font-bold">₦5,000.00 - ₦6,000.00</p>
@@ -328,18 +478,20 @@ const App = () => {
                             </div>
                         </div>
                     </section>
+                    </div>
 
                     <section className="mb-8">
                         <div className="relative">
-                            <img src="https://placehold.co/1200x300" alt="Nigerian Fiction banner" className="w-full h-auto" />
+                            <img src="images/Main.png" alt="Nigerian Fiction banner" className="w-full h-100" />
                             <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center bg-red-500 bg-opacity-50">
                                 <h2 className="text-4xl font-bold text-white">Nigerian Fiction</h2>
                                 <p className="text-white text-lg">Enjoy literary fiction from the shores of Naija</p>
-                                <button className="bg-white text-red-500 px-4 py-2 mt-4">See All</button>
+                                <button className="mt-4 px-6 py-2 bg-white text-black  rounded-full">See All</button>
                             </div>
                         </div>
                     </section>
 
+                    <div className="container mx-auto p-4">
                     <section className="mb-8">
                         <h2 className="text-2xl font-bold mb-4">BEST SELLING KNOWLEDGE BOOKS</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
@@ -347,7 +499,7 @@ const App = () => {
                                 {
                                     title: "Gift A Book",
                                     price: "₦5,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/gift.png",
                                     alt: "Gift A Book cover",
                                     buttonText: "SELECT AMOUNT"
                                 },
@@ -355,7 +507,7 @@ const App = () => {
                                     title: "Nearly All The Men in Lagos Are Mad",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/01.png",
                                     alt: "Nearly All The Men in Lagos Are Mad cover",
                                     buttonText: "ADD TO CART"
                                 },
@@ -363,7 +515,7 @@ const App = () => {
                                     title: "Small Business, Big Money",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/02.png",
                                     alt: "Small Business, Big Money cover",
                                     buttonText: "ADD TO CART"
                                 },
@@ -371,7 +523,7 @@ const App = () => {
                                     title: "Vantage",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/03.png",
                                     alt: "Vantage cover",
                                     buttonText: "OUT OF STOCK"
                                 },
@@ -379,7 +531,7 @@ const App = () => {
                                     title: "The Secret Lives of Baba Segi's Wives",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/04.png",
                                     alt: "The Secret Lives of Baba Segi's Wives cover",
                                     buttonText: "ADD TO CART"
                                 },
@@ -387,7 +539,7 @@ const App = () => {
                                     title: "Nigeria's Soldiers of Fortune",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/05.png",
                                     alt: "Nigeria's Soldiers of Fortune cover",
                                     buttonText: "ADD TO CART"
                                 },
@@ -395,7 +547,7 @@ const App = () => {
                                     title: "A Broken People's Playlist",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/06.png",
                                     alt: "A Broken People's Playlist cover",
                                     buttonText: "ADD TO CART"
                                 },
@@ -403,7 +555,7 @@ const App = () => {
                                     title: "Stay With Me",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/07.png",
                                     alt: "Stay With Me cover",
                                     buttonText: "OUT OF STOCK"
                                 },
@@ -411,7 +563,7 @@ const App = () => {
                                     title: "Risk and Return",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/08.png",
                                     alt: "Risk and Return cover",
                                     buttonText: "ADD TO CART"
                                 },
@@ -419,7 +571,7 @@ const App = () => {
                                     title: "Fellow Nigerians, It's All Politics",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/09.png",
                                     alt: "Fellow Nigerians, It's All Politics cover",
                                     buttonText: "SELECT OPTIONS"
                                 },
@@ -427,7 +579,7 @@ const App = () => {
                                     title: "Leaving the Tarmac",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/10.png",
                                     alt: "Leaving the Tarmac cover",
                                     buttonText: "OUT OF STOCK"
                                 },
@@ -435,7 +587,7 @@ const App = () => {
                                     title: "The Achebe Collection (Bundle of 6)",
                                     price: "₦5,000.00",
                                     oldPrice: "₦6,000.00",
-                                    imgSrc: "https://placehold.co/200x300",
+                                    imgSrc: "images/11.png",
                                     alt: "The Achebe Collection cover",
                                     buttonText: "OUT OF STOCK"
                                 }
@@ -450,26 +602,28 @@ const App = () => {
                             ))}
                         </div>
                     </section>
-                    <div className="container mx-auto">
+                    </div>
+
                     <header className="relative">
-                        <img src="https://placehold.co/1200x300" alt="Banner with Nigerian Fiction books" className="w-full" />
+                        <img src="images/Main.png" alt="Banner with Nigerian Fiction books" className="w-full h-100" />
                         <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white">
                             <h1 className="text-4xl font-bold">Nigerian Fiction</h1>
                             <p className="text-xl">Enjoy literary fiction from the shores of Naija</p>
-                            <button className="mt-4 px-6 py-2 bg-red-500 text-white rounded-full">See All</button>
+                            <button className="mt-4 px-6 py-2 bg-white text-black  rounded-full">See All</button>
                         </div>
                     </header>
-
+                    <div className="container mx-auto">
+                    <div className="container mx-auto p-4">
                     <section className="my-8">
                         <h2 className="text-2xl font-bold text-center">FICTION</h2>
                         <div className="flex overflow-x-auto space-x-4 mt-4">
                             {[
-                                { title: "Caught Up", author: "Liz Tomforde", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "The Wicked In Me", author: "Suzanne Wright", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "What A Mother's Love Don't Teach You", author: "Sharma Taylor", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "Foxglove", author: "Adalyn Grace", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "Turn A Blind Eye (Paperback)", author: "Jeffrey Archer", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "A Man Called Ove", author: "Frederick Backman", price: "₦15,500.00", img: "https://placehold.co/150x200" }
+                                { title: "Caught Up", author: "Liz Tomforde", price: "₦15,500.00", img: "images/12.png" },
+                                { title: "The Wicked In Me", author: "Suzanne Wright", price: "₦15,500.00", img: "images/13.png" },
+                                { title: "What A Mother's Love Don't Teach You", author: "Sharma Taylor", price: "₦15,500.00", img: "images/14.png" },
+                                { title: "Foxglove", author: "Adalyn Grace", price: "₦15,500.00", img: "images/15.png" },
+                                { title: "Turn A Blind Eye (Paperback)", author: "Jeffrey Archer", price: "₦15,500.00", img: "images/16.png" },
+                                { title: "A Man Called Ove", author: "Frederick Backman", price: "₦15,500.00", img: "images/17.png" }
                             ].map((book, index) => (
                                 <div key={index} className="flex-shrink-0 w-40">
                                     <img src={book.img} alt={`Cover of ${book.title}`} className="w-full" />
@@ -486,9 +640,8 @@ const App = () => {
                         <h2 className="text-2xl font-bold text-center">OUR BLOG</h2>
                         <div className="flex justify-center space-x-4 mt-4">
                             {[
-                                { title: "A Review of A Man Called Ove", description: "Introduction: A Man Called Ove is the debut of renowned author Fredrik Backman. It tells the ...", img: "https://placehold.co/150x150" },
-                                { title: "Top 20 Books to Gift This Christmas", description: "Whether you are searching for something for someone who loves literature, business books, or history enthusiasts ...", img: "https://placehold.co/150x150" },
-                                { title: "A Good Way To Explore A Boy Transitioning Into A Man: A Conversation With Tosin Anomolafe", description: "Tosin Anomolafe is a young Nigerian author, making his debut with the novel Father-Time Continuum ...", img: "https://placehold.co/150x150" }
+                                { title: "Top 20 Books to Gift This Christmas", description: "Whether you are searching for something for someone who loves literature, business books, or history enthusiasts ...", img: "images/18.png" },
+                                { title: "A Good Way To Explore A Boy Transitioning Into A Man: A Conversation With Tosin Anomolafe", description: "Tosin Anomolafe is a young Nigerian author, making his debut with the novel Father-Time Continuum ...", img: "images/19.png" }
                             ].map((blog, index) => (
                                 <div key={index} className="w-1/3 p-4 border">
                                     <img src={blog.img} alt={`Blog post: ${blog.title}`} className="w-full" />
@@ -514,15 +667,15 @@ const App = () => {
                     </section>
 
                     <section className="my-8 justify-center">
-                        <h2 className="text-2xl font-bold text-center">BUSINESS</h2>
+                        <h2 className="text-2xl font-bold text-center">Politics / History</h2>
                         <div className="justify-items-center flex overflow-x-auto space-x-4 mt-4">
                             {[
-                                { title: "The Map of Knowledge: How Classical Ideas Were Lost and Found: A History in Seven Cities", author: "Violet Moller", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "The Hitler Years: Triumph 1933 - 1939 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "https://placehold.co/150x200" },
-                                { title: "The Hitler Years: Disaster 1940-1945 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "https://placehold.co/150x200" },
-                                { title: "Policy of Deceit: Britain and Palestine, 1914–1939 (Paperback)", author: "Peter Shambrook", price: "₦14,000.00", img: "https://placehold.co/150x200" },
-                                { title: "Emperor of Rome: The Sunday Times Bestseller (Hardback)", author: "Mary Beard", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "The Making of the Modern Middle East: A Personal History (Paperback)", author: "Jeremy Bowen", price: "₦11,000.00", img: "https://placehold.co/150x200" }
+                                { title: "The Map of Knowledge: How Classical Ideas Were Lost and Found: A History in Seven Cities", author: "Violet Moller", price: "₦15,500.00", img: "images/20.png" },
+                                { title: "The Hitler Years: Triumph 1933 - 1939 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "images/21.png" },
+                                { title: "The Hitler Years: Disaster 1940-1945 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "images/22.png" },
+                                { title: "Policy of Deceit: Britain and Palestine, 1914–1939 (Paperback)", author: "Peter Shambrook", price: "₦14,000.00", img: "images/23.png" },
+                                { title: "Emperor of Rome: The Sunday Times Bestseller (Hardback)", author: "Mary Beard", price: "₦15,500.00", img: "images/24.png" },
+                                { title: "The Making of the Modern Middle East: A Personal History (Paperback)", author: "Jeremy Bowen", price: "₦11,000.00", img: "images/25.png" }
                             ].map((book, index) => (
                                 <div key={index} className="flex-shrink-0 w-40">
                                     <img src={book.img} alt={`Cover of ${book.title}`} className="w-full" />
@@ -534,16 +687,39 @@ const App = () => {
                             ))}
                         </div>
                     </section>
-                    <section className="my-8">
+
+                    <section className="my-8 justify-center">
+                        <h2 className="text-2xl font-bold text-center">BUSINESS</h2>
+                        <div className="justify-items-center flex overflow-x-auto space-x-4 mt-4">
+                            {[
+                                { title: "The Map of Knowledge: How Classical Ideas Were Lost and Found: A History in Seven Cities", author: "Violet Moller", price: "₦15,500.00", img: "images/26.png" },
+                                { title: "The Hitler Years: Triumph 1933 - 1939 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "images/27.png" },
+                                { title: "The Hitler Years: Disaster 1940-1945 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "images/28.png" },
+                                { title: "Policy of Deceit: Britain and Palestine, 1914–1939 (Paperback)", author: "Peter Shambrook", price: "₦14,000.00", img: "images/29.png" },
+                                { title: "Emperor of Rome: The Sunday Times Bestseller (Hardback)", author: "Mary Beard", price: "₦15,500.00", img: "images/30.png" },
+                                { title: "The Making of the Modern Middle East: A Personal History (Paperback)", author: "Jeremy Bowen", price: "₦11,000.00", img: "images/31.png" }
+                            ].map((book, index) => (
+                                <div key={index} className="flex-shrink-0 w-40">
+                                    <img src={book.img} alt={`Cover of ${book.title}`} className="w-full" />
+                                    <h3 className="text-sm mt-2">{book.title}</h3>
+                                    <p className="text-xs text-gray-500">{book.author}</p>
+                                    <p className="text-red-500 font-bold">{book.price}</p>
+                                    <button className="mt-2 px-4 py-1 bg-blue-500 text-white text-xs rounded">ADD TO CART</button>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    <section className="my-8 justify-center">
                         <h2 className="text-2xl font-bold text-center">YOUNG ADULT</h2>
                         <div className="flex overflow-x-auto space-x-4 mt-4">
                             {[
-                                { title: "The Map of Knowledge: How Classical Ideas Were Lost and Found: A History in Seven Cities", author: "Violet Moller", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "The Hitler Years: Triumph 1933 - 1939 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "https://placehold.co/150x200" },
-                                { title: "The Hitler Years: Disaster 1940-1945 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "https://placehold.co/150x200" },
-                                { title: "Policy of Deceit: Britain and Palestine, 1914–1939 (Paperback)", author: "Peter Shambrook", price: "₦14,000.00", img: "https://placehold.co/150x200" },
-                                { title: "Emperor of Rome: The Sunday Times Bestseller (Hardback)", author: "Mary Beard", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "The Making of the Modern Middle East: A Personal History (Paperback)", author: "Jeremy Bowen", price: "₦11,000.00", img: "https://placehold.co/150x200" }
+                                { title: "The Map of Knowledge: How Classical Ideas Were Lost and Found: A History in Seven Cities", author: "Violet Moller", price: "₦15,500.00", img: "images/32.png" },
+                                { title: "The Hitler Years: Triumph 1933 - 1939 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "images/33.png" },
+                                { title: "The Hitler Years: Disaster 1940-1945 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "images/34.png" },
+                                { title: "Policy of Deceit: Britain and Palestine, 1914–1939 (Paperback)", author: "Peter Shambrook", price: "₦14,000.00", img: "images/35.png" },
+                                { title: "Emperor of Rome: The Sunday Times Bestseller (Hardback)", author: "Mary Beard", price: "₦15,500.00", img: "images/36.png" },
+                                { title: "The Making of the Modern Middle East: A Personal History (Paperback)", author: "Jeremy Bowen", price: "₦11,000.00", img: "images/37.png" }
                                 
                             ].map((book, index) => (
                                 <div key={index} className="flex-shrink-0 w-40">
@@ -556,16 +732,16 @@ const App = () => {
                             ))}
                         </div>
                     </section>
-                    <section className="my-8">
+                    <section className="my-8 justify-center">
                         <h2 className="text-2xl font-bold text-center"></h2>
                         <div className="flex overflow-x-auto space-x-4 mt-4">
                             {[
-                                { title: "The Map of Knowledge: How Classical Ideas Were Lost and Found: A History in Seven Cities", author: "Violet Moller", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "The Hitler Years: Triumph 1933 - 1939 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "https://placehold.co/150x200" },
-                                { title: "The Hitler Years: Disaster 1940-1945 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "https://placehold.co/150x200" },
-                                { title: "Policy of Deceit: Britain and Palestine, 1914–1939 (Paperback)", author: "Peter Shambrook", price: "₦14,000.00", img: "https://placehold.co/150x200" },
-                                { title: "Emperor of Rome: The Sunday Times Bestseller (Hardback)", author: "Mary Beard", price: "₦15,500.00", img: "https://placehold.co/150x200" },
-                                { title: "The Making of the Modern Middle East: A Personal History (Paperback)", author: "Jeremy Bowen", price: "₦11,000.00", img: "https://placehold.co/150x200" }
+                                { title: "The Map of Knowledge: How Classical Ideas Were Lost and Found: A History in Seven Cities", author: "Violet Moller", price: "₦15,500.00", img: "images/38.png" },
+                                { title: "The Hitler Years: Triumph 1933 - 1939 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "images/39.png" },
+                                { title: "The Hitler Years: Disaster 1940-1945 (Paperback)", author: "Frank McDonough", price: "₦17,000.00", img: "images/40.png" },
+                                { title: "Policy of Deceit: Britain and Palestine, 1914–1939 (Paperback)", author: "Peter Shambrook", price: "₦14,000.00", img: "images/41.png" },
+                                { title: "Emperor of Rome: The Sunday Times Bestseller (Hardback)", author: "Mary Beard", price: "₦15,500.00", img: "images/42.png" },
+                                { title: "The Making of the Modern Middle East: A Personal History (Paperback)", author: "Jeremy Bowen", price: "₦11,000.00", img: "images/43.png" }
                             ].map((book, index) => (
                                 <div key={index} className="flex-shrink-0 w-40">
                                     <img src={book.img} alt={`Cover of ${book.title}`} className="w-full" />
@@ -614,39 +790,44 @@ const App = () => {
                             <h1 className="text-4xl font-bold mb-2">Logo</h1>
                             <p>Book tickets & track your coach anytime, anywhere.</p>
                         </div>
-                        <div className="flex space-x-16">
-                            <div>
-                                <h2 className="font-bold mb-2">Quick Links</h2>
-                                <ul className="space-y-1">
-                                    <li>• Corporate Info</li>
-                                    <li>• Accessibility</li>
-                                    <li>• Jobs</li>
-                                    <li>• Ad Choices</li>
-                                    <li>• Privacy Policy</li>
-                                    <li>• CA Notice</li>
-                                    <li>• Terms of Service - NEW</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• NBC App</li>
-                                    <li>• Peacock</li>
-                                    <li>• Advertise</li>
-                                    <li>• Closed Captioning</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• Advertise</li>
-                                    <li>• Link TV Provider</li>
-                                    <li>• FAQ</li>
-                                    <li>• Casting</li>
-                                    <li>• Contact Us</li>
-                                    <li>• Local Schedule</li>
-                                    <li>• Tickets and NBC Studio Tour</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {/* Column 1 */}
+  <div>
+    <h2 className="font-bold mb-2">Quick Links</h2>
+    <ul className="space-y-1">
+      <li>• Corporate Info</li>
+      <li>• Accessibility</li>
+      <li>• Jobs</li>
+      <li>• Ad Choices</li>
+      <li>• Privacy Policy</li>
+      <li>• CA Notice</li>
+      <li>• Terms of Service - NEW</li>
+    </ul>
+  </div>
+
+  {/* Column 2 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• NBC App</li>
+      <li>• Peacock</li>
+      <li>• Advertise</li>
+      <li>• Closed Captioning</li>
+    </ul>
+  </div>
+
+  {/* Column 3 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• Advertise</li>
+      <li>• Link TV Provider</li>
+      <li>• FAQ</li>
+      <li>• Casting</li>
+      <li>• Contact Us</li>
+      <li>• Local Schedule</li>
+      <li>• Tickets and NBC Studio Tour</li>
+    </ul>
+  </div>
+</div>
                     </div>
                 </div>
                     </footer>
@@ -655,7 +836,10 @@ const App = () => {
             );
         };
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        // React 18 Rendering
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
     </script>
 </body>
 </html>

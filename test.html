@@ -1,59 +1,252 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Kitchen and Eateries</title>
-    <script src="https://unpkg.com/react/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <script src="https://cdn.jsdelivr.net/npm/react@18/umd/react.development.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
 </head>
-<body>
+<body class="bg-white flex items-center justify-center min-h-screen">
     <div id="root"></div>
     <script type="text/babel">
-        const App = () => {
-            const items = [
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+1" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+2" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+3" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+4" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+5" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+6" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+7" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+8" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+9" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+10" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+11" },
-                { title: "Chicken and Chips fancy resturant", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+12" },
-                { title: "Unilorin B/shop", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+13" },
-                { title: "Wireless book shop", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+14" },
-                { title: "Arcane Bookshop", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+15" },
-                { title: "Arcane Tutorial and Book...", address: "24 John street off Shoprite, Abuja", rating: 4.34, image: "https://placehold.co/600x400?text=Restaurant+16" },
-            ];
+        const { useState } = React;
 
-            return (
-                <div className="container mx-auto p-4">
-                    <h1 className="text-3xl font-bold text-center mb-6">Kitchen and Eateries</h1>
-                    <div className="flex justify-center mb-6">
-                        <input type="text" placeholder="Search by property eg. name, reg no etc" className="w-full max-w-lg p-2 border rounded-l-full" />
-                        <button className="bg-blue-900 text-white p-2 rounded-r-full">Search</button>
+        function App() {
+            const categories = ['Student', 'Service Provider', 'Store Owner', 'Merchant'];
+            const categoryColors = {
+                'Student': '#F2FF00',
+                'Service Provider': '#A2FFFF4D',
+                'Store Owner': '#F6A2FF4D',
+                'Merchant': '#A9A2FF4D',
+            };
+
+            const [selectedCategory, setSelectedCategory] = useState(null);
+            const [isSubmitted, setIsSubmitted] = useState(false);
+            const [showLogin, setShowLogin] = useState(false);
+
+            const selectCategory = (category) => {
+                setSelectedCategory(category);
+            };
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (selectedCategory) {
+                    setIsSubmitted(true);
+                } else {
+                    alert("Please select a category to proceed.");
+                }
+            };
+
+            const handleBack = () => {
+                setIsSubmitted(false);
+            };
+
+            const handleContinueToLogin = () => {
+                setShowLogin(true);
+            };
+
+            const renderCategoryForm = () => {
+                switch (selectedCategory) {
+                    case 'Student':
+                        return (
+                            <div className="my-16 flex flex-col md:flex-row items-start justify-between space-y-10 md:space-y-0 md:space-x-14">
+    <div className="w-full md:w-1/2">
+        <h1 className="text-2xl font-bold mb-4">Sign up - Student</h1>
+        <form className="space-y-4">
+            {[
+                { label: "School", placeholder: "Enter your school" },
+                { label: "State", placeholder: "Enter your state" },
+                { label: "Degree/Department", placeholder: "Enter your degree/department" },
+                { label: "Level/Class", placeholder: "Enter your level/class" },
+                { label: "Course", placeholder: "Enter your course" },
+            ].map((field, index) => (
+                <div key={index}>
+                    <label className="block text-gray-700">{field.label}</label>
+                    <input
+                        type="text"
+                        placeholder={field.placeholder}
+                        className="w-full border border-gray-300 rounded p-2"
+                    />
+                </div>
+            ))}
+            <div className="flex items-center space-x-4">
+                {["Start year", "Finish year"].map((label, index) => (
+                    <div key={index} className="w-1/2">
+                        <label className="block text-gray-700">{label}</label>
+                        <select className="w-full border border-gray-300 rounded p-2">
+                            <option value="">Select year</option>
+                            {Array.from({ length: 100 }, (_, i) => {
+                                const year = new Date().getFullYear() - 50 + i;
+                                return (
+                                    <option key={year} value={year}>
+                                        {year}
+                                    </option>
+                                );
+                            })}
+                        </select>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        {items.map((item, index) => (
-                            <div key={index} className="border rounded-lg overflow-hidden shadow-lg">
-                                <img src={item.image} alt={`Image of ${item.title}`} className="w-full h-48 object-cover" />
-                                <div className="p-4">
-                                    <h2 className="font-bold text-lg">{item.title}</h2>
-                                    <p className="text-gray-600"><i className="fas fa-map-marker-alt"></i> {item.address}</p>
-                                    <div className="flex items-center mt-2">
-                                        <span className="text-yellow-500"><i className="fas fa-star"></i> {item.rating}</span>
+                ))}
+            </div>
+            <div className="flex items-center space-x-2">
+                <input type="checkbox" id="schooling" className="border border-gray-300 rounded" />
+                <label htmlFor="schooling" className="text-red-500">
+                    I am still schooling here
+                </label>
+            </div>
+        </form>
+    </div>
+    <div className="mt-16 flex flex-col items-center justify-center">
+        <div className="border-2 border-gray-300 rounded-lg p-4 w-full flex flex-col items-center">
+            <p className="text-gray-700 mb-4">Upload a profile picture or logo</p>
+            <div className="relative w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center">
+                <i className="fas fa-camera text-gray-500"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+                        );
+                    case 'Service Provider':
+                        return (
+                            <div className="container mx-auto p-4">
+                                <h1 className="text-2xl font-bold mb-6">Sign up - Service Provider</h1>
+                                <form className="space-y-4">
+                                    <div>
+                                        <label className="block text-gray-700">Business Name</label>
+                                        <input type="text" placeholder="Enter your business name" className="w-full border border-gray-300 rounded p-2" />
                                     </div>
-                                </div>
+                                    <div>
+                                        <label className="block text-gray-700">Services Offered</label>
+                                        <textarea className="w-full border border-gray-300 rounded p-2" placeholder="Describe your services"></textarea>
+                                    </div>
+                                </form>
                             </div>
-                        ))}
-                    </div>
+                        );
+                    case 'Store Owner':
+                        return (
+                            <div className="container mx-auto p-4">
+                                <h1 className="text-2xl font-bold mb-6">Sign up - Store Owner</h1>
+                                <form className="space-y-4">
+                                    <div>
+                                        <label className="block text-gray-700">Store Name</label>
+                                        <input type="text" placeholder="Enter your store name" className="w-full border border-gray-300 rounded p-2" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-gray-700">Products Sold</label>
+                                        <textarea className="w-full border border-gray-300 rounded p-2" placeholder="List your products"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        );
+                    case 'Merchant':
+                        return (
+                            <div className="container mx-auto p-4">
+                                <h1 className="text-2xl font-bold mb-6">Sign up - Merchant</h1>
+                                <form className="space-y-4">
+                                    <div>
+                                        <label className="block text-gray-700">Merchant ID</label>
+                                        <input type="text" placeholder="Enter your merchant ID" className="w-full border border-gray-300 rounded p-2" />
+                                    </div>
+                                    <div>
+                                        <label className="block text-gray-700">Business Type</label>
+                                        <input type="text" placeholder="Enter your business type" className="w-full border border-gray-300 rounded p-2" />
+                                    </div>
+                                </form>
+                            </div>
+                        );
+                    default:
+                        return null;
+                }
+            };
+
+            const renderLoginForm = () => (
+                <div className="max-w-md mx-auto p-6">
+                    <h1 className="text-3xl font-bold mb-6">Login</h1>
+                    <form className="space-y-4">
+                        <div>
+                            <label className="block text-gray-700">Email</label>
+                            <input type="email" placeholder="Enter your email" className="w-full border border-gray-300 rounded p-2" />
+                        </div>
+                        <div>
+                            <label className="block text-gray-700">Password</label>
+                            <input type="password" placeholder="Enter your password" className="w-full border border-gray-300 rounded p-2" />
+                        </div>
+                        <button type="submit" className="w-full bg-blue-900 text-white py-2 rounded">
+                            Login
+                        </button>
+                    </form>
                 </div>
             );
-        };
+
+            if (showLogin) {
+                return renderLoginForm();
+            }
+
+            if (isSubmitted && selectedCategory) {
+                return (
+                    <div>
+                        {renderCategoryForm()}
+                        <div className="flex justify-between mt-6">
+                            <button onClick={handleBack} className="text-blue-900 text-2xl flex items-center">
+                                <i className="fas fa-arrow-left mr-2"></i> Back
+                            </button>
+                            <button onClick={handleContinueToLogin} className="bg-blue-900 text-white px-6 py-2 rounded">
+                                Continue
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="max-w-md w-full mx-auto p-6">
+                    <h1 className="text-3xl font-bold mb-6">Sign Up</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-semibold mb-2">Your Name</label>
+                            <input type="text" placeholder="Your name" className="w-full border-b-2 border-gray-300 py-2 focus:outline-none" />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-semibold mb-2">Email</label>
+                            <input type="email" placeholder="jamesjohnson@gmail.com" className="w-full border-b-2 border-gray-300 py-2 focus:outline-none" />
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-semibold mb-2">Career</label>
+                            <p className="text-gray-500 mb-2">What are you registering as?</p>
+                            <div className="flex flex-wrap gap-2 my-4">
+                                {categories.map((category) => (
+                                    <span
+                                        key={category}
+                                        onClick={() => selectCategory(category)}
+                                        className={`px-4 py-2 rounded-full cursor-pointer transform transition-transform duration-200 hover:scale-105
+                                            ${selectedCategory === category ? 'text-white' : 'text-gray-700'}`}
+                                        style={{
+                                            backgroundColor: selectedCategory === category ? categoryColors[category] : '#e5e7eb',
+                                        }}
+                                    >
+                                        {category}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 font-semibold mb-2">Password</label>
+                            <input type="password" placeholder="password" className="w-full border-b-2 border-gray-300 py-2 focus:outline-none" />
+                        </div>
+                        <div className="mb-6">
+                            <label className="block text-gray-700 font-semibold mb-2">Re-type Password</label>
+                            <input type="password" placeholder="re-type password" className="w-full border-b-2 border-gray-300 py-2 focus:outline-none" />
+                        </div>
+                        <button type="submit" className="w-full bg-blue-900 text-white py-2 rounded-full">
+                            Sign Up
+                        </button>
+                    </form>
+                </div>
+            );
+        }
 
         ReactDOM.render(<App />, document.getElementById('root'));
     </script>

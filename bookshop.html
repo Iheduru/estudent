@@ -24,6 +24,22 @@ const App = () => {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [isOthersOpen, setIsOthersOpen] = useState(false); // Added state for Others dropdown
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const categories = [
+        'All', 'State', 'University', 'Poly', 'College', 'Secondary', 'Primary',
+        'Course', 'Science', 'Price', 'Commerce', 'Fiction', 'Business',
+        'Music', 'Engineering', 'Agric', 'Art', 'PhD', 'Masters', 'Bachelors',
+        'Diploma', 'Abroad', 'Date'
+    ];
+
+    const [selectedCategories, setSelectedCategories] = useState([]);
+
+    const toggleCategory = (category) => {
+        setSelectedCategories((prevSelected) =>
+            prevSelected.includes(category)
+                ? prevSelected.filter((item) => item !== category) // Remove if already selected
+                : [...prevSelected, category] // Add if not selected
+        );
+    };
 
     useEffect(() => {
         window.addEventListener("resize", checkScreenSize);
@@ -85,7 +101,7 @@ const App = () => {
                     <a href="homepage.html" className="text-gray-600 hover:text-gray-900">Home</a>
                     <a href="loan.html" className="text-gray-600 hover:text-gray-900">Loan</a>
                     <a href="buy.html" className="text-gray-600 hover:text-gray-900">Buy</a>
-                    <a href="ejobs.html" className="text-white font-bold border rounded bg-blue-900 px-3">Ejobs</a>
+                    <a href="ejobs.html" className="text-gray-600 hover:text-gray-900">Ejobs</a>
 
                     {/* Ride Dropdown */}
                     <div className="relative">
@@ -144,10 +160,10 @@ const App = () => {
                             className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
                             style={{ top: '100%', left: 0 }}
                         >
-                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="services.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
                             <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
                             <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
-                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="hairdresser.html" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
                             <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
                             <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
                             <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
@@ -207,41 +223,72 @@ const App = () => {
     <button className="bg-blue-900 text-white px-4 py-2 rounded-full transform transition-transform duration-200 hover:scale-105">Search</button>
   </div>
 </section>
-                    <button className="flex flex-wrap gap-2 my-4 ">
-                        {['All', 'State', 'University', 'Poly', 'College', 'Secondary', 'Primary', 'Course', 'Science', 'Price', 'Commerce', 'Fiction', 'Business', 'Music', 'Engineering', 'Agric', 'Art', 'PhD', 'Masters', 'Bachelors', 'Diploma', 'Abroad', 'Date'].map((category) => (
-                            <span key={category} className="bg-gray-200 text-gray-700 px-4 py-2 rounded-full  transform transition-transform duration-200 hover:scale-105">{category}</span>
-                        ))}
-                    </button>
+<div className="container mx-auto p-4">
+            <button className="flex flex-wrap gap-2 my-4">
+                {categories.map((category) => (
+                    <span
+                        key={category}
+                        onClick={() => toggleCategory(category)}
+                        className={`px-4 py-2 rounded-full cursor-pointer transform transition-transform duration-200 hover:scale-105 
+                            ${selectedCategories.includes(category) 
+                                ? 'bg-blue-500 text-white' // Selected category style
+                                : 'bg-gray-200 text-gray-700' // Unselected category style
+                            }`}
+                    >
+                        {category}
+                    </span>
+                ))}
+            </button>
+            <div className="mt-4">
+                <h3 className="text-xl font-bold">Selected Categories:</h3>
+                <p>{selectedCategories.length > 0 ? selectedCategories.join(', ') : 'None'}</p>
+            </div>
+        </div>
                     <div className="flex space-x-4 mb-4 mt-4">
                         <span className="text-gray-500 "><a href="books.html">Books</a></span>
                         <span className="text-blue-900 font-bold"><a href="bookshop.html">Bookshops</a></span>
                     </div>
-                </div>
+                </div> 
+                            <div className="flex justify-center">
+                        <img src="images/div.fill1.png" alt="Book release event banner" className="w-full" />
+                    </div>
                 <main>
                 <div>
-                    <div className="flex justify-center">
-                        <img src="https://placehold.co/1200x400" alt="Book release event banner" className="w-full max-w-6xl" />
-                    </div>
+
                     <div className="flex justify-center mt-8">
                         <input type="text" placeholder="Input your location" className="border rounded-full py-2 px-4 w-1/2" />
                         <button className="bg-blue-900 text-white rounded-full py-2 px-6 ml-2">Map out</button>
                     </div>
                     <h2 className="text-center text-2xl font-bold mt-8">Bookshops around you</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-8">
-                        {Array(12).fill().map((_, index) => (
-                            <div key={index} className="border rounded-lg overflow-hidden shadow-lg">
-                                <img src="https://placehold.co/300x200" alt="Bookshop" className="w-full" />
-                                <div className="p-4">
-                                    <h3 className="font-bold">Bookshop Name</h3>
-                                    <p className="text-gray-500">123 Main Street, City</p>
-                                    <div className="flex items-center mt-2">
-                                        <span className="text-yellow-500"><i className="fas fa-star"></i></span>
-                                        <span className="ml-2">4.5</span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+    {[
+        "images/Rectangle 45772.png",
+        "images/Rectangle 45794.png",
+        "images/Rectangle 45792.png",
+        "images/Rectangle 45794.png",
+        "images/Rectangle 45794.png",
+        "images/Rectangle 45796.png",
+        "images/Rectangle 45772.png",
+        "images/Rectangle 45794.png",
+        "images/Rectangle 45772.png",
+        "images/Rectangle 45794.png",
+        "images/Rectangle 457991.png",
+        "images/Rectangle 45794.png"
+    ].map((imageUrl, index) => (
+        <div key={index} className="border rounded-lg overflow-hidden shadow-lg">
+            <img src={imageUrl} alt={`Bookshop ${index + 1}`} className="w-full" />
+            <div className="p-4">
+                <h3 className="font-bold">Bookshop Name {index + 1}</h3>
+                <p className="text-gray-500">123 Main Street, City</p>
+                <div className="flex items-center mt-2">
+                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                    <span className="ml-2">4.5</span>
+                </div>
+            </div>
+        </div>
+    ))}
+</div>
+
                 </div>
                 </main>
 
@@ -249,25 +296,36 @@ const App = () => {
                     <div className="container mx-auto p-4">
                     <h1 className="text-center text-2xl font-bold mb-8">Highly recommended</h1>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8">
-                        {Array(6).fill().map((_, index) => (
-                            <div key={index} className="border rounded-lg shadow-md p-4">
-                                <img src={`https://placehold.co/300x200?text=Bookstore+Image+${index+1}`} alt={`Bookstore Image ${index+1}`} className="w-full h-40 object-cover rounded-t-lg mb-4" />
-                                <h2 className="text-lg font-semibold mb-2">{index % 3 === 0 ? 'Unilorin B/shop' : index % 3 === 1 ? 'Wireless book shop' : 'Arcane Bookshop'}</h2>
-                                <p className="text-gray-500 mb-2"><i className="fas fa-map-marker-alt"></i> 24, Ilorin street off Shoprits.</p>
-                                <div className="flex items-center">
-                                    <span className="text-yellow-500"><i className="fas fa-star"></i> <i className="fas fa-star"></i> <i className="fas fa-star"></i> <i className="fas fa-star"></i> <i className="fas fa-star-half-alt"></i></span>
-                                    <span className="ml-2 text-gray-600">4.3</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="relative">
-                        <img src="https://placehold.co/1200x400?text=Book+Event+Background" alt="Book Event Background" className="w-full h-64 object-cover" />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
-                        </div>
+                        {[
+        "images/Rectangle 45772.png",
+        "images/Rectangle 45794.png",
+        "images/Rectangle 45792.png",
+        "images/Rectangle 45794.png",
+        "images/Rectangle 45794.png",
+        "images/Rectangle 45796.png",
+        "images/Rectangle 45772.png",
+        "images/Rectangle 45794.png",
+    ].map((imageUrl, index) => (
+        <div key={index} className="border rounded-lg overflow-hidden shadow-lg">
+            <img src={imageUrl} alt={`Bookshop ${index + 1}`} className="w-full" />
+            <div className="p-4">
+                <h3 className="font-bold">Bookshop Name {index + 1}</h3>
+                <p className="text-gray-500">123 Main Street, City</p>
+                <div className="flex items-center mt-2">
+                    <span className="text-yellow-500"><i className="fas fa-star"></i></span>
+                    <span className="ml-2">4.5</span>
+                </div>
+            </div>
+        </div>
+    ))}
                     </div>
                 </div>
                     </section>
+                    <div className="relative">
+                        <img src="images/div.fill.png" alt="Book Event Background" className="w-full h-100 object-cover" />
+                        <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
+                        </div>
+                    </div>
                 
                     <div className="text-center py-8 container p-8">
                         <h2 className="text-xl font-bold">You are 90% MORE likely to get the best flight deals by subscribing</h2>
@@ -302,39 +360,44 @@ const App = () => {
                             <h1 className="text-4xl font-bold mb-2">Logo</h1>
                             <p>Book tickets & track your coach anytime, anywhere.</p>
                         </div>
-                        <div className="flex space-x-16">
-                            <div>
-                                <h2 className="font-bold mb-2">Quick Links</h2>
-                                <ul className="space-y-1">
-                                    <li>• Corporate Info</li>
-                                    <li>• Accessibility</li>
-                                    <li>• Jobs</li>
-                                    <li>• Ad Choices</li>
-                                    <li>• Privacy Policy</li>
-                                    <li>• CA Notice</li>
-                                    <li>• Terms of Service - NEW</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• NBC App</li>
-                                    <li>• Peacock</li>
-                                    <li>• Advertise</li>
-                                    <li>• Closed Captioning</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• Advertise</li>
-                                    <li>• Link TV Provider</li>
-                                    <li>• FAQ</li>
-                                    <li>• Casting</li>
-                                    <li>• Contact Us</li>
-                                    <li>• Local Schedule</li>
-                                    <li>• Tickets and NBC Studio Tour</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {/* Column 1 */}
+  <div>
+    <h2 className="font-bold mb-2">Quick Links</h2>
+    <ul className="space-y-1">
+      <li>• Corporate Info</li>
+      <li>• Accessibility</li>
+      <li>• Jobs</li>
+      <li>• Ad Choices</li>
+      <li>• Privacy Policy</li>
+      <li>• CA Notice</li>
+      <li>• Terms of Service - NEW</li>
+    </ul>
+  </div>
+
+  {/* Column 2 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• NBC App</li>
+      <li>• Peacock</li>
+      <li>• Advertise</li>
+      <li>• Closed Captioning</li>
+    </ul>
+  </div>
+
+  {/* Column 3 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• Advertise</li>
+      <li>• Link TV Provider</li>
+      <li>• FAQ</li>
+      <li>• Casting</li>
+      <li>• Contact Us</li>
+      <li>• Local Schedule</li>
+      <li>• Tickets and NBC Studio Tour</li>
+    </ul>
+  </div>
+</div>
                     </div>
                 </div>
                     </footer>
@@ -343,7 +406,10 @@ const App = () => {
             );
         };
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        // React 18 Rendering
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
     </script>
 </body>
 </html>

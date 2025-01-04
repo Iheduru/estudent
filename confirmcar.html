@@ -147,10 +147,10 @@ const App = () => {
                             className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
                             style={{ top: '100%', left: 0 }}
                         >
-                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="services.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
                             <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
                             <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
-                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="hairdresser.html" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
                             <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
                             <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
                             <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
@@ -204,7 +204,7 @@ const App = () => {
                         <div className="lg:w-1/2">
                             <h1 className="text-2xl font-bold mb-2">Based on your inputed address, these vehicles can easily be delivered to you</h1>
                             <p className="text-gray-600 mb-4">Explore our diverse selection of vehicle categories</p>
-                            <img src="https://placehold.co/600x400" alt="Silver car" className="w-full mb-4" />
+                            <img src="images/Rectangle 4253.png" alt="Silver car" className="w-full mb-4" />
                             <h2 className="text-lg font-semibold">Shutter black</h2>
                             <p className="text-gray-600 mb-4">Experience travel like never before with the Jet Moover. Equipped with...Experience travel like never before with the Jet Moover. Equipped with...Experience travel like never before with the Jet Moover. Equipped with...</p>
                             <div className="flex space-x-2 mb-4">
@@ -241,18 +241,18 @@ const App = () => {
                     <div className="mt-8  container p-8">
                         <div className="flex  lg:flex-row justify-between items-center">
                             <div className="w-full lg:w-1/2 mb-4 lg:mb-0">
-                                <img src="https://placehold.co/600x400" alt="Interior of a vehicle" className="w-full" />
+                                <img src="images/Rectangle 424.png" alt="Interior of a vehicle" className="w-full" />
                             </div>
                             <div className="w-full lg:w-1/2 mx-4 flex flex-col flex-wrap justify-center lg:justify-start space-x-4 ">
-                                <img src="https://placehold.co/200x150" alt="Silver car" className="w-1/2 mb-4 mx-4" />
-                                <img src="https://placehold.co/200x150" alt="Vehicle interior" className="w-1/2 mb-4" />
+                                <img src="images/Rectangle 4253.png" alt="Silver car" className="w-1/2 mb-4 mx-4" />
+                                <img src="images/Rectangle 426.png" alt="Vehicle interior" className="w-1/2 mb-4" />
                             </div>
                         </div>
                         <div className="flex justify-center space-x-4 mt-4">
-                            <img src="https://placehold.co/200x150" alt="Silver car" className="w-1/4" />
-                            <img src="https://placehold.co/200x150" alt="Silver car" className="w-1/4" />
-                            <img src="https://placehold.co/200x150" alt="Silver car" className="w-1/4" />
-                            <img src="https://placehold.co/200x150" alt="Silver car" className="w-1/4" />
+                            <img src="images/Rectangle 4253.png" alt="Silver car" className="w-1/4" />
+                            <img src="images/Rectangle 4253.png" alt="Silver car" className="w-1/4" />
+                            <img src="images/Rectangle 4253.png" alt="Silver car" className="w-1/4" />
+                            <img src="images/Rectangle 4253.png" alt="Silver car" className="w-1/4" />
                         </div>
                     </div>
                     </main>
@@ -290,39 +290,44 @@ const App = () => {
                             <h1 className="text-4xl font-bold mb-2">Logo</h1>
                             <p>Book tickets & track your coach anytime, anywhere.</p>
                         </div>
-                        <div className="flex space-x-16">
-                            <div>
-                                <h2 className="font-bold mb-2">Quick Links</h2>
-                                <ul className="space-y-1">
-                                    <li>• Corporate Info</li>
-                                    <li>• Accessibility</li>
-                                    <li>• Jobs</li>
-                                    <li>• Ad Choices</li>
-                                    <li>• Privacy Policy</li>
-                                    <li>• CA Notice</li>
-                                    <li>• Terms of Service - NEW</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• NBC App</li>
-                                    <li>• Peacock</li>
-                                    <li>• Advertise</li>
-                                    <li>• Closed Captioning</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• Advertise</li>
-                                    <li>• Link TV Provider</li>
-                                    <li>• FAQ</li>
-                                    <li>• Casting</li>
-                                    <li>• Contact Us</li>
-                                    <li>• Local Schedule</li>
-                                    <li>• Tickets and NBC Studio Tour</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {/* Column 1 */}
+  <div>
+    <h2 className="font-bold mb-2">Quick Links</h2>
+    <ul className="space-y-1">
+      <li>• Corporate Info</li>
+      <li>• Accessibility</li>
+      <li>• Jobs</li>
+      <li>• Ad Choices</li>
+      <li>• Privacy Policy</li>
+      <li>• CA Notice</li>
+      <li>• Terms of Service - NEW</li>
+    </ul>
+  </div>
+
+  {/* Column 2 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• NBC App</li>
+      <li>• Peacock</li>
+      <li>• Advertise</li>
+      <li>• Closed Captioning</li>
+    </ul>
+  </div>
+
+  {/* Column 3 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• Advertise</li>
+      <li>• Link TV Provider</li>
+      <li>• FAQ</li>
+      <li>• Casting</li>
+      <li>• Contact Us</li>
+      <li>• Local Schedule</li>
+      <li>• Tickets and NBC Studio Tour</li>
+    </ul>
+  </div>
+</div>
                     </div>
                 </div>
                     </footer>
@@ -330,7 +335,10 @@ const App = () => {
             );
         }
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        // React 18 Rendering
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
     </script>
 </body>
 </html>

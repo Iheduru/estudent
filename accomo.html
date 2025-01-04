@@ -113,7 +113,7 @@ const App = () => {
                     {/* Store Dropdown */}
                     <div className="relative">
                         <button
-                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
+                            className="text-white font-bold border rounded bg-blue-900 px-3"
                             onClick={toggleStoreDropdown}
                         >
                             Store <i className={`fas fa-caret-${isStoreOpen ? "up" : "down"} ml-1`}></i>
@@ -124,7 +124,7 @@ const App = () => {
                         >
                             <a href="store.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
                             <a href="eatery.html" className="block text-black hover:bg-gray-200 px-4 py-2">Restaurant</a>
-                            <a href="accomo.html" className="block text-black hover:bg-gray-200 px-4 py-2">Accommodation and Hostel</a>
+                            <a href="accomo.html" className="block text-white font-bold border rounded bg-blue-900 px-3">Accommodation and Hostel</a>
                             <a href="books.html" className="block text-black hover:bg-gray-200 px-4 py-2">Book Stores</a>
                             <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Accessories</a>
                             <a href="#" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
@@ -136,7 +136,7 @@ const App = () => {
                     {/* Services Dropdown */}
                     <div className="relative">
                         <button
-                            className="text-white font-bold border rounded bg-blue-900 px-3"
+                            className="text-gray-600 hover:text-gray-900 px-3 py-2"
                             onClick={toggleServicesDropdown}
                         >
                             Services <i className={`fas fa-caret-${isServicesOpen ? "up" : "down"} ml-1`}></i>
@@ -145,14 +145,14 @@ const App = () => {
                             className={`absolute mt-2 w-48 bg-white border rounded shadow-lg ${isServicesOpen ? "block" : "hidden"}`}
                             style={{ top: '100%', left: 0 }}
                         >
-                            <a href="/all-services" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
+                            <a href="services.html" className="block text-black hover:bg-gray-200 px-4 py-2">All</a>
                             <a href="/cooking" className="block text-black hover:bg-gray-200 px-4 py-2">Cooking</a>
                             <a href="/cleaning" className="block text-black hover:bg-gray-200 px-4 py-2">Cleaning</a>
-                            <a href="/hairdresser" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
+                            <a href="hairdresser.html" className="block text-black hover:bg-gray-200 px-4 py-2">Hair Dresser</a>
                             <a href="/makeup" className="block text-black hover:bg-gray-200 px-4 py-2">Makeup</a>
                             <a href="/fashion-services" className="block text-black hover:bg-gray-200 px-4 py-2">Fashion</a>
                             <a href="/electrician" className="block text-black hover:bg-gray-200 px-4 py-2">Electrician</a>
-                            <a href="tutoring.html" className="block text-white font-bold border rounded bg-blue-900 px-3">Tutoring</a>
+                            <a href="tutoring.html" className="block text-black hover:bg-gray-200 px-4 py-2">Tutoring</a>
                             <a href="/appliances-services" className="block text-black hover:bg-gray-200 px-4 py-2">Appliances</a>
                         </div>
                     </div>
@@ -200,7 +200,7 @@ const App = () => {
             <section>
                 <div className="bg-gray-100">
                     <section className="relative">
-                        <img src="https://placehold.co/1920x600" alt="Hostel building with arches" className="w-full h-96 object-cover" />
+                        <img src="images/Rectangle 01.png" alt="Hostel building with arches" className="w-full h-100 object-cover" />
                         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white px-4">
                             <h1 className="text-3xl md:text-5xl font-bold">Find best Hostel and Accommodation at best and cheapest rate on estudent</h1>
                             <p className="mt-4 text-lg md:text-xl">By just searching your location, you can find the best deals for your that is not just reasonable, but student pocket friendly</p>
@@ -261,73 +261,118 @@ const App = () => {
                             </div>
                         </div>
                         <section className="mt-12">
-                            <a href="acc.html">
-                            <h2 className="text-2xl font-semibold mb-4">Best deals around Unilorin</h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                                {Array(6).fill().map((_, index) => (
-                                    <div key={index} className="bg-white p-4 rounded-lg shadow-md">
-                                        <img src="https://placehold.co/300x200" alt="Hostel image" className="w-full h-40 object-cover rounded-md" />
-                                        <div className="mt-4">
-                                            <h3 className="text-blue-600 font-semibold">White house hostel <span className="text-red-500">#8743</span> <span className="text-green-500">-5%</span></h3>
-                                            <p className="text-gray-600 mt-2">white house will have a description that would be put here, it could be this long</p>
-                                            <p className="text-black font-bold mt-2">#8000/yr</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </a>
-                        </section>
+  <a href="acc.html">
+    <h2 className="text-2xl font-semibold mb-4">Best deals around Unilorin</h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      {[
+        "images/Rectangle 088.png", // Image 1
+        "images/Rectangle 808.png", // Image 2
+        "images/Rectangle 880.png", // Image 3
+        "images/Rectangle 818.png", // Image 4
+        "images/Rectangle 828.png", // Image 5
+        "images/p5.jpg", // Image 6
+      ].map((imageSrc, index) => (
+        <div key={index} className="bg-white p-4 rounded-lg shadow-md">
+          <img src={imageSrc} alt={`Hostel ${index + 1}`} className="w-full h-40 object-cover rounded-md" />
+          <div className="mt-4">
+            <h3 className="text-blue-600 font-semibold">
+              White house hostel <span className="text-red-500">#8743</span> <span className="text-green-500">-5%</span>
+            </h3>
+            <p className="text-gray-600 mt-2">
+              white house will have a description that would be put here, it could be this long
+            </p>
+            <p className="text-black font-bold mt-2">#8000/yr</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </a>
+</section>
+
                         <section className="mt-12">
                             <a href="acc.html">
                             <h2 className="text-2xl font-semibold mb-4">Best deals around Unilag</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                                {Array(6).fill().map((_, index) => (
-                                    <div key={index} className="bg-white p-4 rounded-lg shadow-md">
-                                        <img src="https://placehold.co/300x200" alt="Hostel image" className="w-full h-40 object-cover rounded-md" />
-                                        <div className="mt-4">
-                                            <h3 className="text-blue-600 font-semibold">White house hostel <span className="text-red-500">#8743</span> <span className="text-green-500">-5%</span></h3>
-                                            <p className="text-gray-600 mt-2">white house will have a description that would be put here, it could be this long</p>
-                                            <p className="text-black font-bold mt-2">#8000/yr</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            </a>
-                        </section>
+      {[
+        "images/Rectangle 088.png", // Image 1
+        "images/Rectangle 808.png", // Image 2
+        "images/Rectangle 880.png", // Image 3
+        "images/Rectangle 818.png", // Image 4
+        "images/Rectangle 828.png", // Image 5
+        "images/p5.jpg", // Image 6
+      ].map((imageSrc, index) => (
+        <div key={index} className="bg-white p-4 rounded-lg shadow-md">
+          <img src={imageSrc} alt={`Hostel ${index + 1}`} className="w-full h-40 object-cover rounded-md" />
+          <div className="mt-4">
+            <h3 className="text-blue-600 font-semibold">
+              White house hostel <span className="text-red-500">#8743</span> <span className="text-green-500">-5%</span>
+            </h3>
+            <p className="text-gray-600 mt-2">
+              white house will have a description that would be put here, it could be this long
+            </p>
+            <p className="text-black font-bold mt-2">#8000/yr</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </a>
+</section>
                         <section className="mt-12">
                             <a href="acc.html">
                             <h2 className="text-2xl font-semibold mb-4">Best deals around UI</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                                {Array(6).fill().map((_, index) => (
-                                    <div key={index} className="bg-white p-4 rounded-lg shadow-md">
-                                        <img src="https://placehold.co/300x200" alt="Hostel image" className="w-full h-40 object-cover rounded-md" />
-                                        <div className="mt-4">
-                                            <h3 className="text-blue-600 font-semibold">White house hostel <span className="text-red-500">#8743</span> <span className="text-green-500">-5%</span></h3>
-                                            <p className="text-gray-600 mt-2">white house will have a description that would be put here, it could be this long</p>
-                                            <p className="text-black font-bold mt-2">#8000/yr</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            </a>
-                        </section>
+      {[
+        "images/Rectangle 088.png", // Image 1
+        "images/Rectangle 808.png", // Image 2
+        "images/Rectangle 880.png", // Image 3
+        "images/Rectangle 818.png", // Image 4
+        "images/Rectangle 828.png", // Image 5
+        "images/p5.jpg", // Image 6
+      ].map((imageSrc, index) => (
+        <div key={index} className="bg-white p-4 rounded-lg shadow-md">
+          <img src={imageSrc} alt={`Hostel ${index + 1}`} className="w-full h-40 object-cover rounded-md" />
+          <div className="mt-4">
+            <h3 className="text-blue-600 font-semibold">
+              White house hostel <span className="text-red-500">#8743</span> <span className="text-green-500">-5%</span>
+            </h3>
+            <p className="text-gray-600 mt-2">
+              white house will have a description that would be put here, it could be this long
+            </p>
+            <p className="text-black font-bold mt-2">#8000/yr</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </a>
+</section>
                         <section className="mt-12">
                             <a href="acc.html">
                             <h2 className="text-2xl font-semibold mb-4">Best deals around Unizik</h2>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                                {Array(6).fill().map((_, index) => (
-                                    <div key={index} className="bg-white p-4 rounded-lg shadow-md">
-                                        <img src="https://placehold.co/300x200" alt="Hostel image" className="w-full h-40 object-cover rounded-md" />
-                                        <div className="mt-4">
-                                            <h3 className="text-blue-600 font-semibold">White house hostel <span className="text-red-500">#8743</span> <span className="text-green-500">-5%</span></h3>
-                                            <p className="text-gray-600 mt-2">white house will have a description that would be put here, it could be this long</p>
-                                            <p className="text-black font-bold mt-2">#8000/yr</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                            </a>
-                        </section>
+      {[
+        "images/Rectangle 088.png", // Image 1
+        "images/Rectangle 808.png", // Image 2
+        "images/Rectangle 880.png", // Image 3
+        "images/Rectangle 818.png", // Image 4
+        "images/Rectangle 828.png", // Image 5
+        "images/p5.jpg", // Image 6
+      ].map((imageSrc, index) => (
+        <div key={index} className="bg-white p-4 rounded-lg shadow-md">
+          <img src={imageSrc} alt={`Hostel ${index + 1}`} className="w-full h-40 object-cover rounded-md" />
+          <div className="mt-4">
+            <h3 className="text-blue-600 font-semibold">
+              White house hostel <span className="text-red-500">#8743</span> <span className="text-green-500">-5%</span>
+            </h3>
+            <p className="text-gray-600 mt-2">
+              white house will have a description that would be put here, it could be this long
+            </p>
+            <p className="text-black font-bold mt-2">#8000/yr</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </a>
+</section>
 
 
 
@@ -368,39 +413,44 @@ const App = () => {
                             <h1 className="text-4xl font-bold mb-2">Logo</h1>
                             <p>Book tickets & track your coach anytime, anywhere.</p>
                         </div>
-                        <div className="flex space-x-16">
-                            <div>
-                                <h2 className="font-bold mb-2">Quick Links</h2>
-                                <ul className="space-y-1">
-                                    <li>• Corporate Info</li>
-                                    <li>• Accessibility</li>
-                                    <li>• Jobs</li>
-                                    <li>• Ad Choices</li>
-                                    <li>• Privacy Policy</li>
-                                    <li>• CA Notice</li>
-                                    <li>• Terms of Service - NEW</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• NBC App</li>
-                                    <li>• Peacock</li>
-                                    <li>• Advertise</li>
-                                    <li>• Closed Captioning</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul className="space-y-1 mt-8">
-                                    <li>• Advertise</li>
-                                    <li>• Link TV Provider</li>
-                                    <li>• FAQ</li>
-                                    <li>• Casting</li>
-                                    <li>• Contact Us</li>
-                                    <li>• Local Schedule</li>
-                                    <li>• Tickets and NBC Studio Tour</li>
-                                </ul>
-                            </div>
-                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+  {/* Column 1 */}
+  <div>
+    <h2 className="font-bold mb-2">Quick Links</h2>
+    <ul className="space-y-1">
+      <li>• Corporate Info</li>
+      <li>• Accessibility</li>
+      <li>• Jobs</li>
+      <li>• Ad Choices</li>
+      <li>• Privacy Policy</li>
+      <li>• CA Notice</li>
+      <li>• Terms of Service - NEW</li>
+    </ul>
+  </div>
+
+  {/* Column 2 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• NBC App</li>
+      <li>• Peacock</li>
+      <li>• Advertise</li>
+      <li>• Closed Captioning</li>
+    </ul>
+  </div>
+
+  {/* Column 3 */}
+  <div>
+    <ul className="space-y-1">
+      <li>• Advertise</li>
+      <li>• Link TV Provider</li>
+      <li>• FAQ</li>
+      <li>• Casting</li>
+      <li>• Contact Us</li>
+      <li>• Local Schedule</li>
+      <li>• Tickets and NBC Studio Tour</li>
+    </ul>
+  </div>
+</div>
                     </div>
                 </div>
                     </footer>
@@ -408,7 +458,10 @@ const App = () => {
             );
         };
 
-        ReactDOM.render(<App />, document.getElementById('root'));
+        // React 18 Rendering
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
     </script>
 </body>
 </html>
